@@ -257,14 +257,24 @@ function handleNotifClick(chatId,chatType,notifId){if(notifId&&currentUser)db.co
 async function clearAllNotifications(){if(!currentUser)return;const batch=db.batch();myNotifications.forEach(n=>{if(!n.read)batch.update(db.collection('users').doc(currentUser.uid).collection('notifications').doc(n.id),{read:true});});try{await batch.commit();}catch(e){}myNotifications.forEach(n=>n.read=true);updateNotifBadge();renderNotifList();}
 function startNotifListener(){if(!currentUser||notifUnsub)return;notifUnsub=db.collection('users').doc(currentUser.uid).collection('notifications').orderBy('timestamp','desc').limit(50).onSnapshot(snap=>{const oldIds=new Set(myNotifications.map(n=>n.id));myNotifications=[];snap.forEach(doc=>{const data=doc.data();const id=doc.id;myNotifications.push({id,...data});if(!oldIds.has(id)&&!data.read&&data.senderId!==currentUser.uid){showToast(`💬 ${data.senderName}: ${data.messagePreview}`,'message',5000);playNotifSound();sendNativeNotification(`Message from ${data.senderName}`,data.messagePreview);}});updateNotifBadge();renderNotifList();},err=>{});}
 
+// Enhanced sendWelcomeEmail to show exact errors on screen
 async function sendWelcomeEmail(email, name){
   if(!email || !name) return;
   try{
-    const params = { to_email: email, to_name: name, website_link: WEBSITE_URL, support_email: 'hamza.ahmed2287@gmail.com', from_name: 'K-Aura Academy' };
+    const params = { 
+      to_email: email, 
+      to_name: name, 
+      website_link: WEBSITE_URL, 
+      support_email: 'hamza.ahmed2287@gmail.com', 
+      from_name: 'K-Aura Academy' 
+    };
     const res = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
     console.log('✅ Welcome email sent successfully!', res.status, res.text);
+    showToast('Welcome email sent successfully! ✅', 'success');
   }catch(e){
     console.log('❌ EmailJS Error Details:', e.status, e.text || e.message);
+    // Show the exact error on screen so you know what's wrong
+    showToast('Email Error: ' + (e.text || e.message), 'error', 8000);
   }
 }
 
@@ -437,13 +447,11 @@ function renderMaterials(){
     const teamFilter=document.getElementById('matTeamFilter').value;
     if(teamFilter!=='all') filtered=filtered.filter(m=>m.teamId===teamFilter);
   } else if(isTrainer()){
-    // Trainer sees team materials OR materials specifically shared with them
     filtered=filtered.filter(m => 
       (m.teamId === currentUserData.teamId) || 
       (m.sharedWith && m.sharedWith.includes(currentUser.uid))
     );
   } else if(isAssistant()){
-    // Assistant sees team materials (if visible) OR materials specifically shared with them
     filtered=filtered.filter(m => 
       (m.teamId === currentUserData.teamId && m.visibleToAssistants === true) || 
       (m.sharedWith && m.sharedWith.includes(currentUser.uid))
@@ -460,13 +468,8 @@ function renderMaterials(){
     const canToggle = isManager() || (isTrainer() && m.teamId === currentUserData.teamId);
     const visToggle = canToggle ? `<button onclick="event.stopPropagation();toggleMatVis('${m.id}',${!vis})" class="absolute top-2 left-10 p-1.5 rounded-lg bg-black/60 hover:bg-black/80 transition vis-toggle ${vis?'active':'inactive'}" title="${vis?'Visible to assistants':'Hidden from assistants'}"><iconify-icon icon="${vis?'solar:eye-bold':'solar:eye-closed-bold'}" width="14"></iconify-icon></button>`:'';
     const delBtn = isManager() ? `<button onclick="event.stopPropagation();openDeleteModal('material','${m.id}')" class="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 hover:bg-red-500/80 text-white transition" style="opacity:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><iconify-icon icon="solar:trash-bin-trash-bold" width="14"></iconify-icon></button>` : '';
-    
-    // Share button for Managers
     const shareBtn = isManager() ? `<button onclick="event.stopPropagation();openShareModal('${m.id}')" class="absolute top-2 right-10 p-1.5 rounded-lg bg-black/60 hover:bg-purple-600 text-white transition" style="opacity:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><iconify-icon icon="solar:user-plus-bold" width="14"></iconify-icon></button>` : '';
-    
     const thumbUrl = getThumbUrl(m.url, isVideo ? 'video' : 'image');
-    
-    // Badge for shared materials
     const sharedBadge = (m.sharedWith && m.sharedWith.length > 0) ? '<span class="text-[10px] text-cyan-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:users-group-two-rounded-bold" width="10"></iconify-icon> Shared</span>' : '';
     const privateBadge = (!m.teamId && isManager()) ? '<span class="text-[10px] text-amber-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:lock-password-bold" width="10"></iconify-icon> Managers Only</span>' : '';
     const sharedWithMeBadge = (m.sharedWith && m.sharedWith.includes(currentUser.uid) && !isManager()) ? '<span class="text-[10px] text-cyan-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:share-bold" width="10"></iconify-icon> Shared with you</span>' : '';
@@ -492,7 +495,6 @@ function renderMaterials(){
   grid.innerHTML=h||`<div class="col-span-full text-center py-12 text-gray-600">No materials</div>`;
 }
 
-// Share Modal Logic
 function openShareModal(matId) {
   sharingMaterialId = matId;
   const m = allMaterials.find(x => x.id === matId);
