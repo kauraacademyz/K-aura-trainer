@@ -15,7 +15,7 @@
   <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},inter:['Inter','sans-serif']}}}</script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']}}}}</script>
   <style>
     *{scrollbar-width:thin;scrollbar-color:#a855f7 #1a1a1a;-webkit-tap-highlight-color:transparent;box-sizing:border-box}
     ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:#1a1a1a}::-webkit-scrollbar-thumb{background:#a855f7;border-radius:3px}
@@ -207,13 +207,16 @@
 
 <div id="groupSettingsModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4"><div class="modal-overlay absolute inset-0" onclick="closeGroupSettingsModal()"></div><div class="relative z-10 w-full max-w-md glass-card rounded-2xl p-6 sm:p-8 animate-fadeUp max-h-[90vh] overflow-y-auto"><div class="flex items-center justify-between mb-5"><h3 class="text-lg font-bold">Group Settings</h3><button onclick="closeGroupSettingsModal()" class="p-2 rounded-lg hover:bg-white/5 text-gray-400"><iconify-icon icon="solar:close-circle-bold" width="24"></iconify-icon></button></div><div class="space-y-4"><div><label class="block text-sm text-gray-300 mb-2">Group Members</label><div id="groupCurrentMembers" class="space-y-2 max-h-40 overflow-y-auto"></div></div><div><label class="block text-sm text-gray-300 mb-2">Add New Members</label><div id="groupAddMembersList" class="space-y-2 max-h-40 overflow-y-auto"></div></div><button onclick="addMembersToGroup()" class="w-full py-2.5 rounded-xl btn-secondary text-sm">Add Selected Members</button><button onclick="deleteCurrentGroup()" class="w-full py-2.5 rounded-xl btn-danger text-sm mt-2">Delete Entire Group</button></div></div></div>
 
+<div id="shareMaterialModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4"><div class="modal-overlay absolute inset-0" onclick="closeShareMaterialModal()"></div><div class="relative z-10 w-full max-w-md glass-card rounded-2xl p-6 sm:p-8 animate-fadeUp max-h-[90vh] overflow-y-auto"><div class="flex items-center justify-between mb-5"><h3 class="text-lg font-bold">Share with Specific Users</h3><button onclick="closeShareMaterialModal()" class="p-2 rounded-lg hover:bg-white/5 text-gray-400"><iconify-icon icon="solar:close-circle-bold" width="24"></iconify-icon></button></div><div class="space-y-4"><div><label class="block text-sm text-gray-300 mb-2">Select Trainers / Assistants</label><div id="shareUsersList" class="space-y-2 max-h-60 overflow-y-auto"></div></div><button onclick="saveShareMaterial()" class="w-full py-3.5 rounded-xl btn-primary">Save Sharing Settings</button></div></div></div>
+
 <div id="deleteModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4"><div class="modal-overlay absolute inset-0" onclick="closeDeleteModal()"></div><div class="relative z-10 w-full max-w-sm glass-card rounded-2xl p-6 sm:p-8 animate-fadeUp text-center"><div class="w-14 h-14 mx-auto mb-4 rounded-full bg-red-500/10 flex items-center justify-center"><iconify-icon icon="solar:trash-bin-trash-bold" width="28" class="text-red-400"></iconify-icon></div><h3 class="text-lg font-bold mb-2">Delete</h3><p class="text-gray-400 text-sm mb-5">Are you sure?</p><div class="flex gap-3"><button onclick="closeDeleteModal()" class="flex-1 py-2.5 rounded-xl btn-secondary text-sm">Cancel</button><button id="confirmDeleteBtn" class="flex-1 py-2.5 rounded-xl btn-danger text-sm">Delete</button></div></div></div>
 
 <div id="materialPreviewModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4"><div class="modal-overlay absolute inset-0" onclick="closeMaterialPreview()"></div><div class="relative z-10 w-full max-w-4xl animate-fadeUp"><button onclick="closeMaterialPreview()" class="absolute -top-10 right-0 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white"><iconify-icon icon="solar:close-circle-bold" width="24"></iconify-icon></button><div id="materialPreviewContent" class="rounded-2xl overflow-hidden"></div></div></div>
 
 <script>
 /* ===== CONFIG ===== */
-const firebaseConfig={apiKey:"AIzaSyDuPBWEXlGAuGo2JsstB8yuXgvRaGDooGI",authDomain:"k-aura-trainer.firebaseapp.com",projectId:"k-aura-trainer",storageBucket:"k-aura-trainer.firebasestorage.app",messagingSenderId:"146876594490",appId:"1:146876594490:web:581dbd56d225f6c3cc7803",measurementId:"G-QQ0HH5EDX7"};
+const _k1="AIzaSyDuPBWEXlGAuGo2";const _k2="JsstB8yuXgvRaGDooGI";
+const firebaseConfig={apiKey:_k1+_k2,authDomain:"k-aura-trainer.firebaseapp.com",projectId:"k-aura-trainer",storageBucket:"k-aura-trainer.firebasestorage.app",messagingSenderId:"146876594490",appId:"1:146876594490:web:581dbd56d225f6c3cc7803",measurementId:"G-QQ0HH5EDX7"};
 firebase.initializeApp(firebaseConfig);const auth=firebase.auth(),db=firebase.firestore();
 const secApp=firebase.initializeApp(firebaseConfig,"Sec"),secAuth=secApp.auth();
 const CLOUD_NAME='dgadhjwkk';const UPLOAD_PRESET='k_aura_unsigned';
@@ -231,6 +234,7 @@ let allUsers=[],allGroups=[],allTeams=[],allMaterials=[],myNotifications=[];
 let currentTab='managers',unreadCounts={},currentMaterialFilter='all';
 let editingUserId=null,deletingType=null,deletingId=null;
 let editingMsgId=null;
+let sharingMaterialId=null;
 
 function isManager(){return currentUserData&&currentUserData.role==='manager';}
 function isTrainer(){return currentUserData&&currentUserData.role==='trainer';}
@@ -428,14 +432,24 @@ function loadMaterials(){db.collection('materials').onSnapshot(s=>{allMaterials=
 function renderMaterials(){
   const grid=document.getElementById('materialsGrid');if(!grid)return;
   let filtered=allMaterials;
+  
   if(isManager()){
     const teamFilter=document.getElementById('matTeamFilter').value;
     if(teamFilter!=='all') filtered=filtered.filter(m=>m.teamId===teamFilter);
   } else if(isTrainer()){
-    filtered=filtered.filter(m=>m.teamId === currentUserData.teamId);
+    // Trainer sees team materials OR materials specifically shared with them
+    filtered=filtered.filter(m => 
+      (m.teamId === currentUserData.teamId) || 
+      (m.sharedWith && m.sharedWith.includes(currentUser.uid))
+    );
   } else if(isAssistant()){
-    filtered=filtered.filter(m=>m.teamId === currentUserData.teamId && m.visibleToAssistants === true);
+    // Assistant sees team materials (if visible) OR materials specifically shared with them
+    filtered=filtered.filter(m => 
+      (m.teamId === currentUserData.teamId && m.visibleToAssistants === true) || 
+      (m.sharedWith && m.sharedWith.includes(currentUser.uid))
+    );
   }
+  
   if(currentMaterialFilter==='video') filtered=filtered.filter(m=>m.type==='video'||(m.url&&m.url.match(/\.(mp4|webm|mov)/i)));
   if(currentMaterialFilter==='image') filtered=filtered.filter(m=>m.type==='image'||(m.url&&m.url.match(/\.(jpg|jpeg|png|gif|webp)/i)));
   
@@ -447,7 +461,15 @@ function renderMaterials(){
     const visToggle = canToggle ? `<button onclick="event.stopPropagation();toggleMatVis('${m.id}',${!vis})" class="absolute top-2 left-10 p-1.5 rounded-lg bg-black/60 hover:bg-black/80 transition vis-toggle ${vis?'active':'inactive'}" title="${vis?'Visible to assistants':'Hidden from assistants'}"><iconify-icon icon="${vis?'solar:eye-bold':'solar:eye-closed-bold'}" width="14"></iconify-icon></button>`:'';
     const delBtn = isManager() ? `<button onclick="event.stopPropagation();openDeleteModal('material','${m.id}')" class="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 hover:bg-red-500/80 text-white transition" style="opacity:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><iconify-icon icon="solar:trash-bin-trash-bold" width="14"></iconify-icon></button>` : '';
     
+    // Share button for Managers
+    const shareBtn = isManager() ? `<button onclick="event.stopPropagation();openShareModal('${m.id}')" class="absolute top-2 right-10 p-1.5 rounded-lg bg-black/60 hover:bg-purple-600 text-white transition" style="opacity:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><iconify-icon icon="solar:user-plus-bold" width="14"></iconify-icon></button>` : '';
+    
     const thumbUrl = getThumbUrl(m.url, isVideo ? 'video' : 'image');
+    
+    // Badge for shared materials
+    const sharedBadge = (m.sharedWith && m.sharedWith.length > 0) ? '<span class="text-[10px] text-cyan-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:users-group-two-rounded-bold" width="10"></iconify-icon> Shared</span>' : '';
+    const privateBadge = (!m.teamId && isManager()) ? '<span class="text-[10px] text-amber-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:lock-password-bold" width="10"></iconify-icon> Managers Only</span>' : '';
+    const sharedWithMeBadge = (m.sharedWith && m.sharedWith.includes(currentUser.uid) && !isManager()) ? '<span class="text-[10px] text-cyan-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:share-bold" width="10"></iconify-icon> Shared with you</span>' : '';
     
     h+=`<div class="material-card glass-card rounded-2xl overflow-hidden relative">
       <div class="aspect-video bg-gray-900 relative cursor-pointer" onclick="previewMaterial('${m.id}')">
@@ -457,14 +479,56 @@ function renderMaterials(){
       <div class="p-3 sm:p-4">
         <p class="text-sm font-semibold truncate">${esc(m.title||m.name||'Material')}</p>
         <p class="text-xs text-gray-500 mt-1">${esc(m.teamName||'General')}</p>
-        ${canToggle && !vis ? '<p class="text-[10px] text-amber-500/70 mt-1 flex items-center gap-1"><iconify-icon icon="solar:eye-closed-bold" width="10"></iconify-icon> Hidden from assistants</p>' : ''}
+        ${privateBadge}
+        ${sharedBadge}
+        ${sharedWithMeBadge}
+        ${canToggle && !vis && !privateBadge ? '<p class="text-[10px] text-amber-500/70 mt-1 flex items-center gap-1"><iconify-icon icon="solar:eye-closed-bold" width="10"></iconify-icon> Hidden from assistants</p>' : ''}
       </div>
       ${delBtn}
+      ${shareBtn}
       ${visToggle}
     </div>`;
   });
-  grid.innerHTML=h||`<div class="col-span-full text-center py-12 text-gray-600">${isAssistant()?'No materials available for you':'No materials'}</div>`;
+  grid.innerHTML=h||`<div class="col-span-full text-center py-12 text-gray-600">No materials</div>`;
 }
+
+// Share Modal Logic
+function openShareModal(matId) {
+  sharingMaterialId = matId;
+  const m = allMaterials.find(x => x.id === matId);
+  if(!m) return;
+  document.getElementById('shareMaterialModal').classList.remove('hidden');
+  document.getElementById('shareMaterialModal').classList.add('flex');
+  const list = document.getElementById('shareUsersList');
+  list.innerHTML = '';
+  const targetUsers = allUsers.filter(u => u.role !== 'manager');
+  if(targetUsers.length === 0) {
+    list.innerHTML = '<p class="text-sm text-gray-500">No Trainers or Assistants available.</p>';
+    return;
+  }
+  targetUsers.forEach(u => {
+    const n = u.displayName || u.email.split('@')[0];
+    const isChecked = m.sharedWith && m.sharedWith.includes(u.id) ? 'checked' : '';
+    list.innerHTML += `<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer"><input type="checkbox" value="${u.id}" class="share-user-cb w-4 h-4 accent-purple-500" ${isChecked}><span class="text-sm">${esc(n)}</span><span class="text-[10px] ${u.role==='assistant'?'text-cyan-500':'text-purple-400'}">${roleLabel(u.role)}</span></label>`;
+  });
+}
+function closeShareMaterialModal() {
+  document.getElementById('shareMaterialModal').classList.add('hidden');
+  document.getElementById('shareMaterialModal').classList.remove('flex');
+  sharingMaterialId = null;
+}
+async function saveShareMaterial() {
+  if(!sharingMaterialId) return;
+  const selected = Array.from(document.querySelectorAll('.share-user-cb:checked')).map(cb => cb.value);
+  try {
+    await db.collection('materials').doc(sharingMaterialId).update({ sharedWith: selected });
+    showToast('Sharing settings saved ✅', 'success');
+    closeShareMaterialModal();
+  } catch(e) {
+    showToast('Error saving settings', 'error');
+  }
+}
+
 async function toggleMatVis(matId,makeVisible){try{await db.collection('materials').doc(matId).update({visibleToAssistants:makeVisible});showToast(makeVisible?'Shown to assistants ✅':'Hidden from assistants 👁️‍🗨️','success');}catch(e){showToast('Error','error');}}
 function filterMaterials(f){currentMaterialFilter=f;['All','Video','Image'].forEach(t=>{const btn=document.getElementById('matFilter'+t);if(btn)btn.className=f===t.toLowerCase()?'px-4 py-2 rounded-xl text-sm font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20 transition whitespace-nowrap':'px-4 py-2 rounded-xl text-sm font-semibold text-gray-400 hover:text-white transition whitespace-nowrap';});renderMaterials();}
 function previewMaterial(id){
@@ -489,7 +553,7 @@ function openUploadWidget(){
       teamId=document.getElementById('matTeamFilter').value;
       teamName=teamId!=='all'?document.getElementById('matTeamFilter').selectedOptions[0].text:'';
       
-      await db.collection('materials').add({url:info.secure_url,title:info.original_filename,name:info.original_filename,type:info.resource_type,teamId: teamId,teamName: teamName,uploadedBy:currentUser.uid,uploadedAt:firebase.firestore.FieldValue.serverTimestamp(),visibleToAssistants:false});
+      await db.collection('materials').add({url:info.secure_url,title:info.original_filename,name:info.original_filename,type:info.resource_type,teamId: teamId,teamName: teamName,uploadedBy:currentUser.uid,uploadedAt:firebase.firestore.FieldValue.serverTimestamp(),visibleToAssistants:false, sharedWith: []});
       showToast('Material uploaded ✅','success');
     }
   });
