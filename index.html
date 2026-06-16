@@ -257,7 +257,6 @@ function handleNotifClick(chatId,chatType,notifId){if(notifId&&currentUser)db.co
 async function clearAllNotifications(){if(!currentUser)return;const batch=db.batch();myNotifications.forEach(n=>{if(!n.read)batch.update(db.collection('users').doc(currentUser.uid).collection('notifications').doc(n.id),{read:true});});try{await batch.commit();}catch(e){}myNotifications.forEach(n=>n.read=true);updateNotifBadge();renderNotifList();}
 function startNotifListener(){if(!currentUser||notifUnsub)return;notifUnsub=db.collection('users').doc(currentUser.uid).collection('notifications').orderBy('timestamp','desc').limit(50).onSnapshot(snap=>{const oldIds=new Set(myNotifications.map(n=>n.id));myNotifications=[];snap.forEach(doc=>{const data=doc.data();const id=doc.id;myNotifications.push({id,...data});if(!oldIds.has(id)&&!data.read&&data.senderId!==currentUser.uid){showToast(`💬 ${data.senderName}: ${data.messagePreview}`,'message',5000);playNotifSound();sendNativeNotification(`Message from ${data.senderName}`,data.messagePreview);}});updateNotifBadge();renderNotifList();},err=>{});}
 
-// Enhanced sendWelcomeEmail to show exact errors on screen
 async function sendWelcomeEmail(email, name){
   if(!email || !name) return;
   try{
@@ -273,7 +272,6 @@ async function sendWelcomeEmail(email, name){
     showToast('Welcome email sent successfully! ✅', 'success');
   }catch(e){
     console.log('❌ EmailJS Error Details:', e.status, e.text || e.message);
-    // Show the exact error on screen so you know what's wrong
     showToast('Email Error: ' + (e.text || e.message), 'error', 8000);
   }
 }
