@@ -13,7 +13,6 @@
   <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
-  <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']}}}}</script>
   <style>
@@ -27,12 +26,9 @@
     @keyframes notif-exit{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-20px)}}
     @keyframes badge-pop{0%{transform:scale(0)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
     @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
-    .animate-fadeUp{animation:fadeUp .6s ease-out forwards}
-    .animate-fadeIn{animation:fadeIn .4s ease-out forwards}
-    .animate-float{animation:float 3s ease-in-out infinite}
-    .animate-notif-in{animation:notif-slide .4s ease-out forwards}
-    .animate-notif-out{animation:notif-exit .3s ease-in forwards}
-    .animate-badge-pop{animation:badge-pop .3s ease-out forwards}
+    .animate-fadeUp{animation:fadeUp .6s ease-out forwards}.animate-fadeIn{animation:fadeIn .4s ease-out forwards}
+    .animate-float{animation:float 3s ease-in-out infinite}.animate-notif-in{animation:notif-slide .4s ease-out forwards}
+    .animate-notif-out{animation:notif-exit .3s ease-in forwards}.animate-badge-pop{animation:badge-pop .3s ease-out forwards}
     .animate-pulse-dot{animation:pulse-dot 2s ease-in-out infinite}
     .chat-bubble-sent{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border-radius:16px 16px 4px 16px;max-width:85%}
     .chat-bubble-received{background:#1a1a1a;border:1px solid rgba(255,255,255,.08);border-radius:16px 16px 16px 4px;max-width:85%}
@@ -48,14 +44,12 @@
     .btn-primary:active{transform:translateY(0)}
     .btn-secondary{background:rgba(168,85,247,.1);color:#c084fc;border:1px solid rgba(168,85,247,.2);transition:all .3s;min-height:48px}
     .btn-secondary:hover{background:rgba(168,85,247,.2);border-color:rgba(168,85,247,.4)}
-    .btn-danger{background:#ef4444;color:#fff;font-weight:600;transition:all .3s;min-height:48px}
-    .btn-danger:hover{background:#dc2626}
+    .btn-danger{background:#ef4444;color:#fff;font-weight:600;transition:all .3s;min-height:48px}.btn-danger:hover{background:#dc2626}
     .toast-container{position:fixed;top:16px;left:16px;right:16px;z-index:10000;display:flex;flex-direction:column;gap:8px;pointer-events:none}
     .toast-container>*{pointer-events:auto}
     .msg-date-separator{display:flex;align-items:center;gap:12px;margin:16px 0}
     .msg-date-separator::before,.msg-date-separator::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08)}
-    .contact-item{transition:all .2s}
-    .contact-item:hover{background:rgba(168,85,247,.05)}
+    .contact-item{transition:all .2s}.contact-item:hover{background:rgba(168,85,247,.05)}
     .contact-item.active-chat{background:rgba(168,85,247,.1);border-left:3px solid #a855f7}
     .stat-card{transition:all .3s}.stat-card:hover{transform:translateY(-4px)}
     .unread-badge{background:#a855f7;color:#fff;font-size:11px;font-weight:700;min-width:20px;height:20px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 6px}
@@ -63,12 +57,10 @@
     .material-card{transition:all .3s}.material-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(168,85,247,.15)}
     .banner-gradient{background:linear-gradient(135deg,#1a0a2e 0%,#050505 50%,#0f0520 100%)}
     select option{background:#1a1a1a;color:#fff}
-    .msg-hover-actions{opacity:0;transition:opacity .2s}
-    .msg-wrapper:hover .msg-hover-actions{opacity:1}
+    .msg-hover-actions{opacity:0;transition:opacity .2s}.msg-wrapper:hover .msg-hover-actions{opacity:1}
     .bottom-nav{position:fixed;bottom:0;right:0;left:0;z-index:50;background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.06);padding-bottom:env(safe-area-inset-bottom)}
     .bottom-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;min-width:0;flex:1;transition:color .2s;color:#666;font-size:11px}
-    .bottom-nav-item.active{color:#a855f7}
-    .bottom-nav-item iconify-icon{font-size:24px}
+    .bottom-nav-item.active{color:#a855f7}.bottom-nav-item iconify-icon{font-size:24px}
     .notif-dropdown{position:absolute;top:100%;right:0;width:360px;max-height:480px;overflow-y:auto;background:#0f0f0f;border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.6);z-index:100;display:none}
     .notif-dropdown.show{display:block}
     .notif-item{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;transition:background .2s}
@@ -77,29 +69,11 @@
     .vis-toggle{transition:all .2s}.vis-toggle:hover{transform:scale(1.1)}
     .vis-toggle.active{color:#a855f7}.vis-toggle.inactive{color:#444}
     .msg-edit-input{background:#0a0a0a;border:1px solid #a855f7;border-radius:12px;padding:8px 12px;color:#fff;width:100%;font-size:14px;outline:none}
-    @media(max-width:1023px){
-      .sidebar-desktop{display:none!important}
-      main{padding-bottom:70px!important}
-      .mobile-header-bar{display:flex!important}
-      .notif-dropdown{left:0;right:auto;width:calc(100vw - 32px);max-width:360px}
-      #chatView{height:calc(100dvh - 128px)!important;margin-top:64px}
-      .contact-item{padding:14px 12px}
-      .chat-bubble-sent,.chat-bubble-received{max-width:88%}
-      #chatHeader{padding:10px 12px}
-      #messageInputArea{padding:10px 12px}
-      #messageInput{padding:12px 16px}
-    }
-    @media(min-width:1024px){
-      .bottom-nav{display:none!important}
-      .mobile-header-bar{display:none!important}
-      .mobile-only{display:none!important}
-      #chatView{height:calc(100dvh - 60px)}
-    }
-    .table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}
-    .table-responsive table{min-width:600px}
+    @media(max-width:1023px){.sidebar-desktop{display:none!important}main{padding-bottom:70px!important}.mobile-header-bar{display:flex!important}.notif-dropdown{left:0;right:auto;width:calc(100vw - 32px);max-width:360px}#chatView{height:calc(100dvh - 128px)!important;margin-top:64px}.contact-item{padding:14px 12px}.chat-bubble-sent,.chat-bubble-received{max-width:88%}#chatHeader{padding:10px 12px}#messageInputArea{padding:10px 12px}#messageInput{padding:12px 16px}}
+    @media(min-width:1024px){.bottom-nav{display:none!important}.mobile-header-bar{display:none!important}.mobile-only{display:none!important}#chatView{height:calc(100dvh - 60px)}}
+    .table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}.table-responsive table{min-width:600px}
     .copyright-bar{background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.05);padding:16px 20px;text-align:center;font-size:12px;color:#555}
-    input,select,textarea{font-size:16px!important}
-    button{min-height:48px;min-width:48px}
+    input,select,textarea{font-size:16px!important}button{min-height:48px;min-width:48px}
   </style>
 </head>
 <body class="min-h-screen overflow-x-hidden">
@@ -110,7 +84,7 @@
   <div class="absolute inset-0"><div class="absolute top-1/4 right-1/4 w-72 h-72 bg-purple-500 rounded-full opacity-[0.04] blur-[120px]"></div><div class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-purple-600 rounded-full opacity-[0.03] blur-[100px]"></div></div>
   <div class="relative z-10 w-full max-w-md px-5">
     <div class="text-center mb-8 animate-fadeUp">
-      <div class="w-24 h-24 mx-auto mb-5 rounded-2xl bg-black flex items-center justify-center animate-float overflow-hidden p-2 border border-purple-500/20"><img src="https://z-cdn-media.chatglm.cn/files/2c57c235-a15c-41b7-b9ba-bdc7d3ce03e9.jpeg?auth_key=1881568820-d8ba34263b094c6b87d10a431fbbaec3-0-b60b3e140fe16688a15f5baaa391eb71" alt="K-Aura" class="w-full h-full object-contain rounded-xl"></div>
+      <div class="w-24 h-24 mx-auto mb-5 rounded-2xl bg-black flex items-center justify-center animate-float overflow-hidden p-2 border border-purple-500/20"><img src="https://res.cloudinary.com/dgadhjwkk/image/upload/q_auto/f_auto/v1781654637/WhatsApp_Image_2026-06-13_at_12.47.59_PM_adhdvt.jpg" alt="K-Aura" class="w-full h-full object-contain rounded-xl"></div>
       <h1 class="text-2xl sm:text-3xl font-bold mb-1"><span class="bg-gradient-to-r from-purple-300 to-purple-500 bg-clip-text text-transparent">K-Aura Academy</span></h1>
       <p class="text-gray-500 text-sm">Football Academy</p><p class="text-gray-400 text-sm mt-2 font-semibold">Trainer Platform</p>
     </div>
@@ -132,7 +106,7 @@
 <!-- MAIN APP -->
 <div id="appContainer" class="hidden min-h-screen flex">
   <aside id="sidebar" class="sidebar-desktop w-72 min-h-screen bg-gray-950 border-r border-white/5 flex flex-col fixed left-0 top-0 z-40 transition-transform duration-300">
-    <div class="p-4 border-b border-white/5"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-black flex items-center justify-center overflow-hidden p-0.5 border border-purple-500/20"><img src="https://z-cdn-media.chatglm.cn/files/2c57c235-a15c-41b7-b9ba-bdc7d3ce03e9.jpeg?auth_key=1881568820-d8ba34263b094c6b87d10a431fbbaec3-0-b60b3e140fe16688a15f5baaa391eb71" alt="" class="w-full h-full object-contain rounded-lg"></div><div><h1 class="text-sm font-bold leading-tight"><span class="text-white text-xs font-normal">K-Aura</span> <span class="text-purple-400">Academy</span></h1></div></div><div class="relative"><button onclick="toggleNotifPanel('desktop')" class="p-2.5 rounded-lg hover:bg-white/5 text-gray-400 hover:text-purple-400 transition relative"><iconify-icon icon="solar:bell-bold" width="22"></iconify-icon><span id="notifBadgeDesktop" class="hidden absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-red-500 text-white text-[10px] font-bold rounded-full items-center justify-center px-1 animate-badge-pop">0</span></button><div id="notifDropdownDesktop" class="notif-dropdown"><div class="p-3 border-b border-white/5 flex items-center justify-between"><h4 class="text-sm font-bold">Notifications</h4><button onclick="clearAllNotifications()" class="text-xs text-purple-400 hover:text-purple-300">Clear All</button></div><div id="notifListDesktop" class="max-h-[400px] overflow-y-auto"></div></div></div></div>
+    <div class="p-4 border-b border-white/5"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-black flex items-center justify-center overflow-hidden p-0.5 border border-purple-500/20"><img src="https://res.cloudinary.com/dgadhjwkk/image/upload/q_auto/f_auto/v1781654637/WhatsApp_Image_2026-06-13_at_12.47.59_PM_adhdvt.jpg" alt="" class="w-full h-full object-contain rounded-lg"></div><div><h1 class="text-sm font-bold leading-tight"><span class="text-white text-xs font-normal">K-Aura</span> <span class="text-purple-400">Academy</span></h1></div></div><div class="relative"><button onclick="toggleNotifPanel('desktop')" class="p-2.5 rounded-lg hover:bg-white/5 text-gray-400 hover:text-purple-400 transition relative"><iconify-icon icon="solar:bell-bold" width="22"></iconify-icon><span id="notifBadgeDesktop" class="hidden absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-red-500 text-white text-[10px] font-bold rounded-full items-center justify-center px-1 animate-badge-pop">0</span></button><div id="notifDropdownDesktop" class="notif-dropdown"><div class="p-3 border-b border-white/5 flex items-center justify-between"><h4 class="text-sm font-bold">Notifications</h4><button onclick="clearAllNotifications()" class="text-xs text-purple-400 hover:text-purple-300">Clear All</button></div><div id="notifListDesktop" class="max-h-[400px] overflow-y-auto"></div></div></div></div>
     <nav class="flex-1 py-3 px-3 space-y-1" id="desktopSidebarNav"></nav>
     <div class="p-4 border-t border-white/5"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-purple-400 font-bold text-sm" id="sidebarAvatar">M</div><div class="flex-1 min-w-0"><p id="sidebarUserName" class="text-sm font-semibold truncate">Manager</p><p id="sidebarUserRole" class="text-xs text-gray-500">Manager</p></div><button onclick="handleLogout()" class="p-2.5 rounded-lg hover:bg-red-500/10 text-gray-500 hover:text-red-400 transition"><iconify-icon icon="solar:logout-2-bold" width="20"></iconify-icon></button></div></div>
     <div class="px-4 pb-3"><div class="text-center text-[10px] text-gray-600 pt-3 border-t border-white/5"><p>© 2026 — Designed & Developed by Hamza Ahmed</p></div></div>
@@ -145,7 +119,7 @@
   </div>
   <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="toggleSidebar()"></div>
   <aside id="mobileSidebar" class="fixed left-0 top-0 bottom-0 w-72 bg-gray-950 border-r border-white/5 z-50 transform -translate-x-full transition-transform duration-300 flex flex-col lg:hidden">
-    <div class="p-4 border-b border-white/5 flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-black flex items-center justify-center overflow-hidden p-0.5 border border-purple-500/20"><img src="https://z-cdn-media.chatglm.cn/files/2c57c235-a15c-41b7-b9ba-bdc7d3ce03e9.jpeg?auth_key=1881568820-d8ba34263b094c6b87d10a431fbbaec3-0-b60b3e140fe16688a15f5baaa391eb71" alt="" class="w-full h-full object-contain rounded-lg"></div><h1 class="text-sm font-bold"><span class="text-purple-400">K-Aura</span></h1></div><button onclick="toggleSidebar()" class="p-2 rounded-lg hover:bg-white/5 text-gray-400"><iconify-icon icon="solar:close-circle-bold" width="22"></iconify-icon></button></div>
+    <div class="p-4 border-b border-white/5 flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-black flex items-center justify-center overflow-hidden p-0.5 border border-purple-500/20"><img src="https://res.cloudinary.com/dgadhjwkk/image/upload/q_auto/f_auto/v1781654637/WhatsApp_Image_2026-06-13_at_12.47.59_PM_adhdvt.jpg" alt="" class="w-full h-full object-contain rounded-lg"></div><h1 class="text-sm font-bold"><span class="text-purple-400">K-Aura</span></h1></div><button onclick="toggleSidebar()" class="p-2 rounded-lg hover:bg-white/5 text-gray-400"><iconify-icon icon="solar:close-circle-bold" width="22"></iconify-icon></button></div>
     <nav class="flex-1 py-3 px-3 space-y-1" id="mobileSidebarNav"></nav>
     <div class="p-4 border-t border-white/5"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-purple-400 font-bold text-sm" id="mobileSidebarAvatar">M</div><div class="flex-1 min-w-0"><p id="mobileSidebarUserName" class="text-sm font-semibold truncate">Manager</p><p id="mobileSidebarUserRole" class="text-xs text-gray-500">Manager</p></div><button onclick="handleLogout()" class="p-2.5 rounded-lg hover:bg-red-500/10 text-gray-500 hover:text-red-400 transition"><iconify-icon icon="solar:logout-2-bold" width="20"></iconify-icon></button></div></div>
     <div class="px-4 pb-3"><div class="text-center text-[10px] text-gray-600 pt-3 border-t border-white/5"><p>© 2026 — Designed & Developed by Hamza Ahmed</p></div></div>
@@ -221,10 +195,7 @@ firebase.initializeApp(firebaseConfig);const auth=firebase.auth(),db=firebase.fi
 const secApp=firebase.initializeApp(firebaseConfig,"Sec"),secAuth=secApp.auth();
 const CLOUD_NAME='dgadhjwkk';const UPLOAD_PRESET='k_aura_unsigned';
 
-// ===== EmailJS Config =====
-const EMAILJS_SERVICE_ID='service_l6pja3t';
-const EMAILJS_TEMPLATE_ID='template_bmduuzd';
-const EMAILJS_PUBLIC_KEY='3_1f_kB09SOgRxGjH';
+const EMAILJS_SERVICE_ID='service_l6pja3t';const EMAILJS_TEMPLATE_ID='template_bmduuzd';const EMAILJS_PUBLIC_KEY='3_1f_kB09SOgRxGjH';
 const WEBSITE_URL='https://kauraacademyz.github.io/K-aura-trainer/';
 try{emailjs.init({publicKey: EMAILJS_PUBLIC_KEY});}catch(e){}
 
@@ -232,9 +203,7 @@ let currentUser=null,currentUserData=null,currentChatId=null,currentChatPartner=
 let contactsUnsub=null,messagesUnsub=null,materialsUnsub=null,notifUnsub=null;
 let allUsers=[],allGroups=[],allTeams=[],allMaterials=[],myNotifications=[];
 let currentTab='managers',unreadCounts={},currentMaterialFilter='all';
-let editingUserId=null,deletingType=null,deletingId=null;
-let editingMsgId=null;
-let sharingMaterialId=null;
+let editingUserId=null,deletingType=null,deletingId=null,editingMsgId=null,sharingMaterialId=null;
 
 function isManager(){return currentUserData&&currentUserData.role==='manager';}
 function isTrainer(){return currentUserData&&currentUserData.role==='trainer';}
@@ -245,7 +214,7 @@ function roleBadge(r){if(r==='manager')return'<span class="px-2 py-1 rounded-lg 
 function showToast(msg,type='info',dur=4000){const c=document.getElementById('toastContainer'),t=document.createElement('div');const cls={info:'border-purple-500/30',success:'border-green-500/30',error:'border-red-500/30',message:'border-blue-500/30'};const ico={info:'solar:info-circle-bold',success:'solar:check-circle-bold',error:'solar:close-circle-bold',message:'solar:chat-round-dots-bold'};const icoColor={info:'text-purple-400',success:'text-green-400',error:'text-red-400',message:'text-blue-400'};t.className=`flex items-center gap-3 px-4 py-3 rounded-xl border ${cls[type]} bg-gray-950/95 backdrop-blur-lg animate-notif-in shadow-2xl`;t.innerHTML=`<iconify-icon icon="${ico[type]}" width="20" class="${icoColor[type]} flex-shrink-0"></iconify-icon><p class="text-sm text-white flex-1 leading-relaxed">${msg}</p><button onclick="this.parentElement.remove()" class="text-gray-500 hover:text-white transition flex-shrink-0"><iconify-icon icon="solar:close-circle-linear" width="16"></iconify-icon></button>`;c.appendChild(t);setTimeout(()=>{t.classList.replace('animate-notif-in','animate-notif-out');setTimeout(()=>t.remove(),300);},dur);}
 
 function requestNotifPermission(){if(!('Notification' in window)){showToast('Browser does not support notifications','error');return;}if(Notification.permission==='granted'){showToast('Notifications are enabled ✅','success');return;}if(Notification.permission==='denied'){showToast('Notifications are blocked','error');return;}Notification.requestPermission().then(p=>{if(p==='granted'){showToast('Notifications enabled ✅','success');setTimeout(()=>sendNativeNotification('K-Aura 🔔','Notifications work!'),500);}else if(p==='denied')showToast('Notifications denied','error');});}
-function sendNativeNotification(title,body){if(!('Notification' in window)||Notification.permission!=='granted')return;try{const n=new Notification(title,{body,icon:'https://z-cdn-media.chatglm.cn/files/2c57c235-a15c-41b7-b9ba-bdc7d3ce03e9.jpeg',tag:'k-aura-'+Date.now()});n.onclick=()=>{window.focus();n.close();};}catch(e){}}
+function sendNativeNotification(title,body){if(!('Notification' in window)||Notification.permission!=='granted')return;try{const n=new Notification(title,{body,icon:'https://res.cloudinary.com/dgadhjwkk/image/upload/q_auto/f_auto/v1781654637/WhatsApp_Image_2026-06-13_at_12.47.59_PM_adhdvt.jpg',tag:'k-aura-'+Date.now()});n.onclick=()=>{window.focus();n.close();};}catch(e){}}
 function playNotifSound(){try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;o.type='sine';g.gain.value=0.06;o.start();g.gain.exponentialRampToValueAtTime(0.001,a.currentTime+0.25);o.stop(a.currentTime+0.25);}catch(e){}}
 function esc(s){if(!s)return '';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function formatTime(ts){if(!ts)return '';const d=ts.toDate?ts.toDate():new Date(ts);const now=new Date();const diff=now-d;if(diff<60000)return 'Now';if(diff<3600000)return Math.floor(diff/60000)+'m';if(diff<86400000)return Math.floor(diff/3600000)+'h';return d.toLocaleDateString();}
@@ -257,42 +226,9 @@ function handleNotifClick(chatId,chatType,notifId){if(notifId&&currentUser)db.co
 async function clearAllNotifications(){if(!currentUser)return;const batch=db.batch();myNotifications.forEach(n=>{if(!n.read)batch.update(db.collection('users').doc(currentUser.uid).collection('notifications').doc(n.id),{read:true});});try{await batch.commit();}catch(e){}myNotifications.forEach(n=>n.read=true);updateNotifBadge();renderNotifList();}
 function startNotifListener(){if(!currentUser||notifUnsub)return;notifUnsub=db.collection('users').doc(currentUser.uid).collection('notifications').orderBy('timestamp','desc').limit(50).onSnapshot(snap=>{const oldIds=new Set(myNotifications.map(n=>n.id));myNotifications=[];snap.forEach(doc=>{const data=doc.data();const id=doc.id;myNotifications.push({id,...data});if(!oldIds.has(id)&&!data.read&&data.senderId!==currentUser.uid){showToast(`💬 ${data.senderName}: ${data.messagePreview}`,'message',5000);playNotifSound();sendNativeNotification(`Message from ${data.senderName}`,data.messagePreview);}});updateNotifBadge();renderNotifList();},err=>{});}
 
-async function sendWelcomeEmail(email, name){
-  if(!email || !name) return;
-  try{
-    const params = { 
-      to_email: email, 
-      to_name: name, 
-      website_link: WEBSITE_URL, 
-      support_email: 'hamza.ahmed2287@gmail.com', 
-      from_name: 'K-Aura Academy' 
-    };
-    const res = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-    console.log('✅ Welcome email sent successfully!', res.status, res.text);
-    showToast('Welcome email sent successfully! ✅', 'success');
-  }catch(e){
-    console.log('❌ EmailJS Error Details:', e.status, e.text || e.message);
-    showToast('Email Error: ' + (e.text || e.message), 'error', 8000);
-  }
-}
+async function sendWelcomeEmail(email, name){if(!email || !name) return;try{const params = { to_email: email, to_name: name, website_link: WEBSITE_URL, support_email: 'hamza.ahmed2287@gmail.com', from_name: 'K-Aura Academy' };const res = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);showToast('Welcome email sent successfully! ✅', 'success');}catch(e){showToast('Email Error: ' + (e.text || e.message), 'error', 8000);}}
 
-// ===== AUTH =====
-auth.onAuthStateChanged(async u=>{
-  if(u){
-    currentUser=u;await loadUserData(u.uid);
-    document.getElementById('loginPage').classList.add('hidden');
-    document.getElementById('appContainer').classList.remove('hidden');document.getElementById('appContainer').classList.add('flex');
-    updateUI();loadDashboardStats();loadTeams();loadUsersList();loadContacts();loadMaterials();setupPresence();startNotifListener();
-    if(isManager()) showView('dashboard');
-    else showView('chat');
-    if('Notification' in window&&Notification.permission==='default')setTimeout(()=>showToast('🔔 Enable notifications to receive messages','info',6000),3000);
-  }else{
-    currentUser=null;currentUserData=null;
-    document.getElementById('loginPage').classList.remove('hidden');
-    document.getElementById('appContainer').classList.add('hidden');document.getElementById('appContainer').classList.remove('flex');
-    cleanup();
-  }
-});
+auth.onAuthStateChanged(async u=>{if(u){currentUser=u;await loadUserData(u.uid);document.getElementById('loginPage').classList.add('hidden');document.getElementById('appContainer').classList.remove('hidden');document.getElementById('appContainer').classList.add('flex');updateUI();loadDashboardStats();loadTeams();loadUsersList();loadContacts();loadMaterials();setupPresence();startNotifListener();if(isManager()) showView('dashboard');else showView('chat');if('Notification' in window&&Notification.permission==='default')setTimeout(()=>showToast('🔔 Enable notifications to receive messages','info',6000),3000);}else{currentUser=null;currentUserData=null;document.getElementById('loginPage').classList.remove('hidden');document.getElementById('appContainer').classList.add('hidden');document.getElementById('appContainer').classList.remove('flex');cleanup();}});
 async function loadUserData(uid){try{const d=await db.collection('users').doc(uid).get();if(d.exists)currentUserData={id:uid,...d.data()};else{const u=auth.currentUser;currentUserData={id:uid,email:u.email,displayName:u.displayName||u.email.split('@')[0],phone:'',role:'manager',teamId:'',teamName:'',online:true,lastSeen:firebase.firestore.FieldValue.serverTimestamp()};await db.collection('users').doc(uid).set(currentUserData);}}catch(e){}}
 function setupPresence(){if(!currentUser)return;const r=db.collection('users').doc(currentUser.uid);r.update({online:true,lastSeen:firebase.firestore.FieldValue.serverTimestamp()});window.addEventListener('beforeunload',()=>r.update({online:false}));document.addEventListener('visibilitychange',()=>r.update({online:!document.hidden,lastSeen:firebase.firestore.FieldValue.serverTimestamp()}));setInterval(()=>{if(auth.currentUser)r.update({online:true});},120000);}
 async function handleLogin(){const email=document.getElementById('loginEmail').value.trim(),pw=document.getElementById('loginPassword').value,e=document.getElementById('loginError'),b=document.getElementById('loginBtn');e.classList.add('hidden');if(!email||!pw){e.textContent='Please enter email and password';e.classList.remove('hidden');return;}b.disabled=true;b.innerHTML='<iconify-icon icon="solar:refresh-bold" width="20" class="animate-spin"></iconify-icon>';try{await auth.signInWithEmailAndPassword(email,pw);}catch(err){let m='An error occurred';if(err.code==='auth/user-not-found')m='Email not registered';else if(err.code==='auth/wrong-password'||err.code==='auth/invalid-credential')m='Incorrect password';else if(err.code==='auth/too-many-requests')m='Too many attempts';e.textContent=m;e.classList.remove('hidden');}finally{b.disabled=false;b.innerHTML='<span>Login</span><iconify-icon icon="solar:arrow-right-bold" width="20"></iconify-icon>';}}
@@ -300,39 +236,17 @@ async function handleForgotPassword(){const email=document.getElementById('login
 async function handleLogout(){if(currentUser)await db.collection('users').doc(currentUser.uid).update({online:false});cleanup();auth.signOut();}
 function toggleLoginPassword(){const i=document.getElementById('loginPassword'),ic=document.getElementById('loginEyeIcon');if(i.type==='password'){i.type='text';ic.setAttribute('icon','solar:eye-closed-bold');}else{i.type='password';ic.setAttribute('icon','solar:eye-bold');}}
 
-// ===== UI =====
-function updateUI(){
-  if(!currentUserData)return;
-  const n=currentUserData.displayName||currentUserData.email.split('@')[0],isM=isManager();
-  document.getElementById('sidebarUserName').textContent=n;document.getElementById('sidebarUserRole').textContent=roleLabel(currentUserData.role);document.getElementById('sidebarAvatar').textContent=n.charAt(0).toUpperCase();
-  const ma=document.getElementById('mobileSidebarAvatar'),mn=document.getElementById('mobileSidebarUserName'),mr=document.getElementById('mobileSidebarUserRole');if(ma)ma.textContent=n.charAt(0).toUpperCase();if(mn)mn.textContent=n;if(mr)mr.textContent=roleLabel(currentUserData.role);
-  
-  document.getElementById('matTeamFilter').classList.toggle('hidden', !isM);
-  document.getElementById('matVisLegend').classList.toggle('hidden', !isM);
-  document.getElementById('uploadMatBtn').classList.toggle('hidden', !isM);
-  document.getElementById('createGroupBtn').classList.toggle('hidden', !isM);
-  
-  buildDesktopSidebarNav(isM);buildMobileSidebarNav(isM);buildBottomNav(isM);
-}
+function updateUI(){if(!currentUserData)return;const n=currentUserData.displayName||currentUserData.email.split('@')[0],isM=isManager();document.getElementById('sidebarUserName').textContent=n;document.getElementById('sidebarUserRole').textContent=roleLabel(currentUserData.role);document.getElementById('sidebarAvatar').textContent=n.charAt(0).toUpperCase();const ma=document.getElementById('mobileSidebarAvatar'),mn=document.getElementById('mobileSidebarUserName'),mr=document.getElementById('mobileSidebarUserRole');if(ma)ma.textContent=n.charAt(0).toUpperCase();if(mn)mn.textContent=n;if(mr)mr.textContent=roleLabel(currentUserData.role);document.getElementById('matTeamFilter').classList.toggle('hidden', !isM);document.getElementById('matVisLegend').classList.toggle('hidden', !isM);document.getElementById('uploadMatBtn').classList.toggle('hidden', !isM);document.getElementById('createGroupBtn').classList.toggle('hidden', !isM);buildDesktopSidebarNav(isM);buildMobileSidebarNav(isM);buildBottomNav(isM);}
 function buildDesktopSidebarNav(isM){const nav=document.getElementById('desktopSidebarNav');if(!nav)return;let h='';if(isM)h+=sidebarLink('dashboard','solar:home-2-bold','Dashboard');h+=sidebarLink('chat','solar:chat-round-dots-bold','Chats',true);h+=sidebarLink('materials','solar:video-library-bold','Materials');if(isM){h+=sidebarLink('teams','solar:shield-bold','Manage Teams');h+=sidebarLink('manageUsers','solar:users-group-rounded-bold','Manage Users');h+=sidebarLink('backup','solar:download-bold','Backup');}nav.innerHTML=h;}
 function buildMobileSidebarNav(isM){const nav=document.getElementById('mobileSidebarNav');if(!nav)return;let h='';if(isM)h+=`<button onclick="showView('dashboard');toggleSidebar()" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300" data-view="dashboard"><iconify-icon icon="solar:home-2-bold" width="22"></iconify-icon><span class="text-sm font-medium">Dashboard</span></button>`;h+=`<button onclick="showView('chat');toggleSidebar()" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300" data-view="chat"><iconify-icon icon="solar:chat-round-dots-bold" width="22"></iconify-icon><span class="text-sm font-medium">Chats</span></button>`;h+=`<button onclick="showView('materials');toggleSidebar()" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300" data-view="materials"><iconify-icon icon="solar:video-library-bold" width="22"></iconify-icon><span class="text-sm font-medium">Materials</span></button>`;if(isM){h+=`<button onclick="showView('teams');toggleSidebar()" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300" data-view="teams"><iconify-icon icon="solar:shield-bold" width="22"></iconify-icon><span class="text-sm font-medium">Manage Teams</span></button>`;h+=`<button onclick="showView('manageUsers');toggleSidebar()" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300" data-view="manageUsers"><iconify-icon icon="solar:users-group-rounded-bold" width="22"></iconify-icon><span class="text-sm font-medium">Manage Users</span></button>`;h+=`<button onclick="showView('backup');toggleSidebar()" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300" data-view="backup"><iconify-icon icon="solar:download-bold" width="22"></iconify-icon><span class="text-sm font-medium">Backup</span></button>`;}nav.innerHTML=h;}
 function buildBottomNav(isM){const nav=document.getElementById('bottomNavInner');if(!nav)return;let h='';if(isM)h+=`<button onclick="showView('dashboard')" class="bottom-nav-item" data-view="dashboard"><iconify-icon icon="solar:home-2-bold"></iconify-icon><span>Dashboard</span></button>`;h+=`<button onclick="showView('chat')" class="bottom-nav-item" data-view="chat"><iconify-icon icon="solar:chat-round-dots-bold"></iconify-icon><span>Chats</span></button>`;h+=`<button onclick="showView('materials')" class="bottom-nav-item" data-view="materials"><iconify-icon icon="solar:video-library-bold"></iconify-icon><span>Materials</span></button>`;if(isM){h+=`<button onclick="showView('manageUsers')" class="bottom-nav-item" data-view="manageUsers"><iconify-icon icon="solar:users-group-rounded-bold"></iconify-icon><span>Users</span></button>`;}nav.innerHTML=h;}
 function sidebarLink(view,icon,label,hasBadge){return`<button onclick="showView('${view}')" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300 relative" data-view="${view}"><iconify-icon icon="${icon}" width="22"></iconify-icon><span class="text-sm font-medium">${label}</span>${hasBadge?'<span id="chatNavBadge" class="hidden unread-badge ml-auto animate-badge-pop">0</span>':''}</button>`;}
 
-function showView(v){
-  if((v==='manageUsers'||v==='teams'||v==='backup'||v==='dashboard')&&!isManager()){showView('chat');return;}
-  ['dashboard','chat','manageUsers','materials','teams','backup'].forEach(x=>{const el=document.getElementById(x+'View');if(el){el.classList.add('hidden');if(x==='chat')el.classList.remove('flex');}});
-  const t=document.getElementById(v+'View');if(t){t.classList.remove('hidden');if(v==='chat')t.classList.add('flex');}
-  document.querySelectorAll('.sidebar-link').forEach(l=>{l.classList.remove('active');if(l.dataset.view===v)l.classList.add('active');});
-  document.querySelectorAll('.bottom-nav-item').forEach(l=>{l.classList.remove('active');if(l.dataset.view===v)l.classList.add('active');});
-  if(v==='manageUsers')renderUsersTable();if(v==='materials')renderMaterials();if(v==='teams')renderTeamsTable();
-}
+function showView(v){if((v==='manageUsers'||v==='teams'||v==='backup'||v==='dashboard')&&!isManager()){showView('chat');return;}['dashboard','chat','manageUsers','materials','teams','backup'].forEach(x=>{const el=document.getElementById(x+'View');if(el){el.classList.add('hidden');if(x==='chat')el.classList.remove('flex');}});const t=document.getElementById(v+'View');if(t){t.classList.remove('hidden');if(v==='chat')t.classList.add('flex');}document.querySelectorAll('.sidebar-link').forEach(l=>{l.classList.remove('active');if(l.dataset.view===v)l.classList.add('active');});document.querySelectorAll('.bottom-nav-item').forEach(l=>{l.classList.remove('active');if(l.dataset.view===v)l.classList.add('active');});if(v==='manageUsers')renderUsersTable();if(v==='materials')renderMaterials();if(v==='teams')renderTeamsTable();}
 function toggleSidebar(){const ms=document.getElementById('mobileSidebar'),ov=document.getElementById('sidebarOverlay');ms.classList.toggle('-translate-x-full');ov.classList.toggle('hidden');}
 
-// ===== DASHBOARD =====
 function loadDashboardStats(){db.collection('users').onSnapshot(s=>{let t=0,m=0,a=0;s.forEach(d=>{const data=d.data();if(data.role==='trainer')t++;if(data.role==='manager')m++;if(data.role==='assistant')a++;});document.getElementById('statTrainers').textContent=t;document.getElementById('statManagers').textContent=m;document.getElementById('statAssistants').textContent=a;});db.collection('materials').onSnapshot(s=>{document.getElementById('statMaterials').textContent=s.size;});}
 
-// ===== TEAMS =====
 function loadTeams(){db.collection('teams').onSnapshot(s=>{allTeams=[];s.forEach(d=>allTeams.push({id:d.id,...d.data()}));renderTeamsTable();populateTeamDropdowns();});}
 function renderTeamsTable(){const tbody=document.getElementById('teamsTableBody');if(!tbody)return;let h='';allTeams.forEach(t=>{const cnt=allUsers.filter(u=>u.teamId===t.id).length;h+=`<tr class="border-b border-white/5"><td class="p-3 sm:p-4 text-sm font-medium">${esc(t.name)}</td><td class="p-3 sm:p-4 text-sm text-gray-400">${cnt}</td><td class="p-3 sm:p-4"><div class="flex gap-2"><button onclick="editTeam('${t.id}','${esc(t.name)}')" class="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-purple-400"><iconify-icon icon="solar:pen-bold" width="16"></iconify-icon></button><button onclick="openDeleteModal('team','${t.id}')" class="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-red-400"><iconify-icon icon="solar:trash-bin-trash-bold" width="16"></iconify-icon></button></div></td></tr>`;});tbody.innerHTML=h||'<tr><td colspan="3" class="p-6 text-center text-gray-600">No teams</td></tr>';}
 function populateTeamDropdowns(){[document.getElementById('newUserTeam'),document.getElementById('editUserTeam'),document.getElementById('matTeamFilter')].forEach(sel=>{if(!sel)return;const v=sel.value;sel.innerHTML=sel.id==='matTeamFilter'?'<option value="all">All Teams</option>':'<option value="">No Team</option>';allTeams.forEach(t=>sel.innerHTML+=`<option value="${t.id}">${esc(t.name)}</option>`);sel.value=v;});}
@@ -343,79 +257,35 @@ function closeAddTeamModal(){document.getElementById('addTeamModal').classList.a
 async function addNewTeam(){const name=document.getElementById('newTeamName').value.trim();if(!name){document.getElementById('addTeamError').textContent='Enter team name';document.getElementById('addTeamError').classList.remove('hidden');return;}await db.collection('teams').add({name,createdAt:firebase.firestore.FieldValue.serverTimestamp()});closeAddTeamModal();showToast('Team added ✅','success');}
 function editTeam(id,oldName){const n=prompt('Edit team name:',oldName);if(n&&n.trim()&&n.trim()!==oldName)db.collection('teams').doc(id).update({name:n.trim()}).then(()=>showToast('Edited ✅','success'));}
 
-// ===== USERS =====
 function loadUsersList(){db.collection('users').onSnapshot(s=>{allUsers=[];s.forEach(d=>allUsers.push({id:d.id,...d.data()}));renderUsersTable();renderContactsList();});}
 function renderUsersTable(){const tbody=document.getElementById('usersTableBody');if(!tbody)return;const filtered=allUsers.filter(u=>{if(currentTab==='managers')return u.role==='manager';if(currentTab==='trainers')return u.role==='trainer';if(currentTab==='assistants')return u.role==='assistant';return false;});let h='';filtered.forEach(u=>{const n=u.displayName||u.email.split('@')[0];h+=`<tr class="border-b border-white/5"><td class="p-3 sm:p-4"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-purple-400 font-bold text-xs">${n.charAt(0).toUpperCase()}</div><span class="text-sm font-medium">${esc(n)}</span></div></td><td class="p-3 sm:p-4 text-sm text-gray-400">${esc(u.email)}</td><td class="p-3 sm:p-4 text-sm text-gray-400 hidden sm:table-cell">${esc(u.teamName||'—')}</td><td class="p-3 sm:p-4 hidden sm:table-cell">${roleBadge(u.role)}</td><td class="p-3 sm:p-4"><div class="flex gap-1"><button onclick="openEditUserModal('${u.id}')" class="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-purple-400"><iconify-icon icon="solar:pen-bold" width="16"></iconify-icon></button><button onclick="openDeleteModal('user','${u.id}')" class="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-red-400"><iconify-icon icon="solar:trash-bin-trash-bold" width="16"></iconify-icon></button></div></td></tr>`;});tbody.innerHTML=h||'<tr><td colspan="5" class="p-6 text-center text-gray-600">No users</td></tr>';}
 function switchUserTab(tab){currentTab=tab;['managers','trainers','assistants'].forEach(t=>{const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));if(!btn)return;btn.className=t===tab?'px-4 py-2 rounded-xl text-sm font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20 transition whitespace-nowrap':'px-4 py-2 rounded-xl text-sm font-semibold text-gray-400 hover:text-white transition whitespace-nowrap';});renderUsersTable();}
 function openAddUserModal(){document.getElementById('addUserModal').classList.remove('hidden');document.getElementById('addUserModal').classList.add('flex');document.getElementById('addUserError').classList.add('hidden');['newUserName','newUserEmail','newUserPhone','newUserPassword'].forEach(id=>document.getElementById(id).value='');document.getElementById('newUserRole').value='trainer';toggleTeamSelect();}
 function closeAddUserModal(){document.getElementById('addUserModal').classList.add('hidden');document.getElementById('addUserModal').classList.remove('flex');}
-async function addNewUser(){
-  const name=document.getElementById('newUserName').value.trim(),email=document.getElementById('newUserEmail').value.trim(),phone=document.getElementById('newUserPhone').value.trim(),pw=document.getElementById('newUserPassword').value,role=document.getElementById('newUserRole').value,teamId=role!=='manager'?document.getElementById('newUserTeam').value:'',teamName=role!=='manager'&&teamId?document.getElementById('newUserTeam').selectedOptions[0].text:'',errEl=document.getElementById('addUserError');
-  errEl.classList.add('hidden');
-  if(!name||!email||!pw){errEl.textContent='Please fill all fields';errEl.classList.remove('hidden');return;}
-  if(pw.length<6){errEl.textContent='Password must be at least 6 characters';errEl.classList.remove('hidden');return;}
-  try{
-    await secAuth.createUserWithEmailAndPassword(email,pw);
-    const uid=secAuth.currentUser.uid;
-    await db.collection('users').doc(uid).set({displayName:name,email,phone,role,teamId,teamName,pwd:pw,online:false,lastSeen:firebase.firestore.FieldValue.serverTimestamp(),createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-    await secAuth.signOut();
-    sendWelcomeEmail(email, name);
-    showToast('User added ✅','success');
-    closeAddUserModal();
-  }catch(e){let m='Error';if(e.code==='auth/email-already-in-use')m='Email already in use';errEl.textContent=m;errEl.classList.remove('hidden');}
-}
+async function addNewUser(){const name=document.getElementById('newUserName').value.trim(),email=document.getElementById('newUserEmail').value.trim(),phone=document.getElementById('newUserPhone').value.trim(),pw=document.getElementById('newUserPassword').value,role=document.getElementById('newUserRole').value,teamId=role!=='manager'?document.getElementById('newUserTeam').value:'',teamName=role!=='manager'&&teamId?document.getElementById('newUserTeam').selectedOptions[0].text:'',errEl=document.getElementById('addUserError');errEl.classList.add('hidden');if(!name||!email||!pw){errEl.textContent='Please fill all fields';errEl.classList.remove('hidden');return;}if(pw.length<6){errEl.textContent='Password must be at least 6 characters';errEl.classList.remove('hidden');return;}try{await secAuth.createUserWithEmailAndPassword(email,pw);const uid=secAuth.currentUser.uid;await db.collection('users').doc(uid).set({displayName:name,email,phone,role,teamId,teamName,pwd:pw,online:false,lastSeen:firebase.firestore.FieldValue.serverTimestamp(),createdAt:firebase.firestore.FieldValue.serverTimestamp()});await secAuth.signOut();sendWelcomeEmail(email, name);showToast('User added ✅','success');closeAddUserModal();}catch(e){let m='Error';if(e.code==='auth/email-already-in-use')m='Email already in use';errEl.textContent=m;errEl.classList.remove('hidden');}}
 function openEditUserModal(uid){const u=allUsers.find(x=>x.id===uid);if(!u)return;editingUserId=uid;document.getElementById('editUserName').value=u.displayName||'';document.getElementById('editUserEmail').value=u.email||'';document.getElementById('editUserPhone').value=u.phone||'';document.getElementById('editUserRole').value=u.role||'trainer';document.getElementById('editTeamSelectContainer').classList.toggle('hidden',u.role==='manager');document.getElementById('editUserTeam').value=u.teamId||'';document.getElementById('editUserError').classList.add('hidden');document.getElementById('editUserModal').classList.remove('hidden');document.getElementById('editUserModal').classList.add('flex');}
 function closeEditUserModal(){document.getElementById('editUserModal').classList.add('hidden');document.getElementById('editUserModal').classList.remove('flex');editingUserId=null;}
 async function saveEditUser(){if(!editingUserId)return;const name=document.getElementById('editUserName').value.trim(),email=document.getElementById('editUserEmail').value.trim(),phone=document.getElementById('editUserPhone').value.trim(),role=document.getElementById('editUserRole').value,teamId=document.getElementById('editUserTeam').value,teamName=teamId?document.getElementById('editUserTeam').selectedOptions[0].text:'',errEl=document.getElementById('editUserError');errEl.classList.add('hidden');if(!name||!email){errEl.textContent='Name and email are required';errEl.classList.remove('hidden');return;}try{await db.collection('users').doc(editingUserId).update({displayName:name,email,phone,role,teamId:role!=='manager'?teamId:'',teamName:role!=='manager'?teamName:''});showToast('Saved ✅','success');closeEditUserModal();}catch(e){errEl.textContent='Error saving';errEl.classList.remove('hidden');}}
 
-// ===== DELETE =====
 function openDeleteModal(type,id){deletingType=type;deletingId=id;document.getElementById('deleteModal').classList.remove('hidden');document.getElementById('deleteModal').classList.add('flex');document.getElementById('confirmDeleteBtn').onclick=confirmDelete;}
 function closeDeleteModal(){document.getElementById('deleteModal').classList.add('hidden');document.getElementById('deleteModal').classList.remove('flex');deletingType=null;deletingId=null;}
 async function confirmDelete(){if(!deletingType||!deletingId)return;try{if(deletingType==='team')await db.collection('teams').doc(deletingId).delete();else if(deletingType==='user')await db.collection('users').doc(deletingId).delete();else if(deletingType==='material')await db.collection('materials').doc(deletingId).delete();else if(deletingType==='group')await db.collection('groups').doc(deletingId).delete();showToast('Deleted ✅','success');}catch(e){showToast('Error deleting','error');}closeDeleteModal();}
 
-// ===== CONTACTS & CHAT =====
 function loadContacts(){db.collection('users').onSnapshot(s=>{allUsers=[];s.forEach(d=>allUsers.push({id:d.id,...d.data()}));renderContactsList();});db.collection('groups').onSnapshot(s=>{allGroups=[];s.forEach(d=>allGroups.push({id:d.id,...d.data()}));renderContactsList();});}
 function renderContactsList(){const list=document.getElementById('contactsList');if(!list)return;const search=(document.getElementById('chatSearch').value||'').toLowerCase();let html='';allUsers.filter(u=>u.id!==currentUser.uid).forEach(u=>{const n=u.displayName||u.email.split('@')[0];if(search&&!n.toLowerCase().includes(search))return;const chatId=getChatId(u.id);const unread=unreadCounts[chatId]||0;html+=`<div class="contact-item flex items-center gap-3 p-3 sm:p-4 cursor-pointer ${currentChatId===chatId?'active-chat':''}" onclick="openChat('${u.id}','private')"><div class="w-11 h-11 rounded-full bg-gray-800 flex items-center justify-center text-purple-400 font-bold text-sm flex-shrink-0 relative">${n.charAt(0).toUpperCase()}<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-gray-950 ${u.online?'bg-green-500':'bg-gray-600'}"></span></div><div class="flex-1 min-w-0"><p class="text-sm font-semibold truncate">${esc(n)} <span class="text-[10px] font-normal ${u.role==='assistant'?'text-cyan-500':u.role==='manager'?'text-blue-400':'text-purple-400'}">${roleLabel(u.role)}</span></p><p class="text-xs text-gray-500 truncate">${u.online?'Online':'Offline'}</p></div>${unread>0?`<span class="unread-badge animate-badge-pop">${unread}</span>`:''}</div>`;});allGroups.forEach(g=>{if(search&&!g.name.toLowerCase().includes(search))return;const unread=unreadCounts[g.id]||0;html+=`<div class="contact-item flex items-center gap-3 p-3 sm:p-4 cursor-pointer ${currentChatId===g.id?'active-chat':''}" onclick="openChat('${g.id}','group')"><div class="w-11 h-11 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 flex-shrink-0"><iconify-icon icon="solar:users-group-rounded-bold" width="20"></iconify-icon></div><div class="flex-1 min-w-0"><p class="text-sm font-semibold truncate">${esc(g.name)}</p><p class="text-xs text-gray-500 truncate">Group · ${(g.members||[]).length} members</p></div>${unread>0?`<span class="unread-badge animate-badge-pop">${unread}</span>`:''}</div>`;});list.innerHTML=html||'<div class="p-6 text-center text-gray-600 text-sm">No chats</div>';}
 function filterContacts(){renderContactsList();}
 function getChatId(otherId){const ids=[currentUser.uid,otherId].sort();return ids[0]+'_'+ids[1];}
-function openChat(partnerId,type){
-  currentChatType=type;
-  if(type==='private'){currentChatId=getChatId(partnerId);currentChatPartner=partnerId;const u=allUsers.find(x=>x.id===partnerId);const n=u?(u.displayName||u.email.split('@')[0]):'';document.getElementById('chatUserName').textContent=n;document.getElementById('chatUserStatus').textContent=u?(u.online?'Online':'Offline'):'';document.getElementById('chatUserAvatar').textContent=n.charAt(0).toUpperCase();document.getElementById('groupSettingsBtn').classList.add('hidden');}
-  else{currentChatId=partnerId;currentChatPartner=partnerId;const g=allGroups.find(x=>x.id===partnerId);document.getElementById('chatUserName').textContent=g?g.name:'Group';document.getElementById('chatUserStatus').textContent=(g&&g.members?g.members.length:0)+' members';document.getElementById('chatUserAvatar').innerHTML='<iconify-icon icon="solar:users-group-rounded-bold" width="18" class="text-purple-400"></iconify-icon>';document.getElementById('groupSettingsBtn').classList.toggle('hidden',!isManager());}
-  if(unreadCounts[currentChatId]){delete unreadCounts[currentChatId];updateChatBadge();}
-  document.getElementById('chatPlaceholder').classList.add('hidden');document.getElementById('chatHeader').classList.remove('hidden');document.getElementById('chatHeader').classList.add('flex');document.getElementById('messagesContainer').classList.remove('hidden');document.getElementById('messageInputArea').classList.remove('hidden');document.getElementById('chatArea').classList.remove('hidden');document.getElementById('chatArea').classList.add('flex');
-  if(window.innerWidth < 1024){document.getElementById('contactsPanel').classList.add('hidden');} else {document.getElementById('contactsPanel').classList.remove('hidden');}
-  loadMessages();renderContactsList();
-}
+function openChat(partnerId,type){currentChatType=type;if(type==='private'){currentChatId=getChatId(partnerId);currentChatPartner=partnerId;const u=allUsers.find(x=>x.id===partnerId);const n=u?(u.displayName||u.email.split('@')[0]):'';document.getElementById('chatUserName').textContent=n;document.getElementById('chatUserStatus').textContent=u?(u.online?'Online':'Offline'):'';document.getElementById('chatUserAvatar').textContent=n.charAt(0).toUpperCase();document.getElementById('groupSettingsBtn').classList.add('hidden');}else{currentChatId=partnerId;currentChatPartner=partnerId;const g=allGroups.find(x=>x.id===partnerId);document.getElementById('chatUserName').textContent=g?g.name:'Group';document.getElementById('chatUserStatus').textContent=(g&&g.members?g.members.length:0)+' members';document.getElementById('chatUserAvatar').innerHTML='<iconify-icon icon="solar:users-group-rounded-bold" width="18" class="text-purple-400"></iconify-icon>';document.getElementById('groupSettingsBtn').classList.toggle('hidden',!isManager());}if(unreadCounts[currentChatId]){delete unreadCounts[currentChatId];updateChatBadge();}document.getElementById('chatPlaceholder').classList.add('hidden');document.getElementById('chatHeader').classList.remove('hidden');document.getElementById('chatHeader').classList.add('flex');document.getElementById('messagesContainer').classList.remove('hidden');document.getElementById('messageInputArea').classList.remove('hidden');document.getElementById('chatArea').classList.remove('hidden');document.getElementById('chatArea').classList.add('flex');if(window.innerWidth < 1024){document.getElementById('contactsPanel').classList.add('hidden');} else {document.getElementById('contactsPanel').classList.remove('hidden');}loadMessages();renderContactsList();}
 function backToContacts(){document.getElementById('chatArea').classList.add('hidden');document.getElementById('chatArea').classList.remove('flex');document.getElementById('contactsPanel').classList.remove('hidden');currentChatId=null;currentChatPartner=null;if(messagesUnsub)messagesUnsub();}
-function loadMessages(){
-  if(messagesUnsub)messagesUnsub();
-  const container=document.getElementById('messagesContainer');
-  container.innerHTML='<div class="flex justify-center py-8"><iconify-icon icon="solar:refresh-bold" width="24" class="text-gray-600 animate-spin"></iconify-icon></div>';
-  messagesUnsub=db.collection('chats').doc(currentChatId).collection('messages').orderBy('timestamp','asc').onSnapshot(snap=>{
-    container.innerHTML='';let lastDate='';
-    snap.forEach(doc=>{
-      const msg=doc.data();const msgId=doc.id;const isMine=msg.senderId===currentUser.uid;
-      const date=msg.timestamp?msg.timestamp.toDate().toLocaleDateString():'';
-      if(date&&date!==lastDate){lastDate=date;container.innerHTML+=`<div class="msg-date-separator"><span class="text-xs text-gray-500 px-3">${date}</span></div>`;}
-      const timeStr=msg.timestamp?msg.timestamp.toDate().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';
-      const bubbleClass=isMine?'chat-bubble-sent':'chat-bubble-received';
-      const senderName=!isMine&&currentChatType==='group'?`<p class="text-xs text-purple-400 mb-1 font-semibold">${esc(msg.senderName||'')}</p>`:'';
-      const editedLabel=msg.edited?'<span class="text-[10px] opacity-50 ml-1">Edited</span>':'';
-      const actions=isMine?`<div class="msg-hover-actions absolute -top-3 right-1 flex gap-1"><button onclick="startEditMsg('${msgId}','${esc(msg.text)}')" class="p-1 rounded-md bg-gray-800 hover:bg-purple-600 text-white transition" title="Edit"><iconify-icon icon="solar:pen-bold" width="12"></iconify-icon></button><button onclick="deleteMsg('${msgId}')" class="p-1 rounded-md bg-gray-800 hover:bg-red-600 text-white transition" title="Delete"><iconify-icon icon="solar:trash-bin-trash-bold" width="12"></iconify-icon></button></div>`:'';
-      container.innerHTML+=`<div class="msg-wrapper flex ${isMine?'justify-end':'justify-start'} relative" id="msg-${msgId}"><div class="${bubbleClass} px-4 py-2.5 relative group">${senderName}${actions}<p class="text-sm leading-relaxed break-words" id="msg-text-${msgId}">${esc(msg.text)}</p><p class="text-[10px] ${isMine?'text-white/60':'text-gray-500'} mt-1 text-right flex items-center justify-end gap-1">${timeStr}${editedLabel}</p></div></div>`;
-    });
-    container.scrollTop=container.scrollHeight;
-  });
-}
+function loadMessages(){if(messagesUnsub)messagesUnsub();const container=document.getElementById('messagesContainer');container.innerHTML='<div class="flex justify-center py-8"><iconify-icon icon="solar:refresh-bold" width="24" class="text-gray-600 animate-spin"></iconify-icon></div>';messagesUnsub=db.collection('chats').doc(currentChatId).collection('messages').orderBy('timestamp','asc').onSnapshot(snap=>{container.innerHTML='';let lastDate='';snap.forEach(doc=>{const msg=doc.data();const msgId=doc.id;const isMine=msg.senderId===currentUser.uid;const date=msg.timestamp?msg.timestamp.toDate().toLocaleDateString():'';if(date&&date!==lastDate){lastDate=date;container.innerHTML+=`<div class="msg-date-separator"><span class="text-xs text-gray-500 px-3">${date}</span></div>`;}const timeStr=msg.timestamp?msg.timestamp.toDate().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';const bubbleClass=isMine?'chat-bubble-sent':'chat-bubble-received';const senderName=!isMine&&currentChatType==='group'?`<p class="text-xs text-purple-400 mb-1 font-semibold">${esc(msg.senderName||'')}</p>`:'';const editedLabel=msg.edited?'<span class="text-[10px] opacity-50 ml-1">Edited</span>':'';const actions=isMine?`<div class="msg-hover-actions absolute -top-3 right-1 flex gap-1"><button onclick="startEditMsg('${msgId}','${esc(msg.text)}')" class="p-1 rounded-md bg-gray-800 hover:bg-purple-600 text-white transition" title="Edit"><iconify-icon icon="solar:pen-bold" width="12"></iconify-icon></button><button onclick="deleteMsg('${msgId}')" class="p-1 rounded-md bg-gray-800 hover:bg-red-600 text-white transition" title="Delete"><iconify-icon icon="solar:trash-bin-trash-bold" width="12"></iconify-icon></button></div>`:'';container.innerHTML+=`<div class="msg-wrapper flex ${isMine?'justify-end':'justify-start'} relative" id="msg-${msgId}"><div class="${bubbleClass} px-4 py-2.5 relative group">${senderName}${actions}<p class="text-sm leading-relaxed break-words" id="msg-text-${msgId}">${esc(msg.text)}</p><p class="text-[10px] ${isMine?'text-white/60':'text-gray-500'} mt-1 text-right flex items-center justify-end gap-1">${timeStr}${editedLabel}</p></div></div>`;});container.scrollTop=container.scrollHeight;});}
 function startEditMsg(msgId,oldText){const el=document.getElementById(`msg-text-${msgId}`);if(!el)return;el.innerHTML=`<div class="flex gap-2"><input type="text" class="msg-edit-input flex-1" id="edit-input-${msgId}" value="${esc(oldText)}" onkeypress="if(event.key==='Enter')saveEditMsg('${msgId}')"><button onclick="saveEditMsg('${msgId}')" class="p-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition text-xs">✓</button><button onclick="cancelEditMsg('${msgId}','${esc(oldText)}')" class="p-1.5 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition text-xs">✗</button></div>`;document.getElementById(`edit-input-${msgId}`).focus();}
 async function saveEditMsg(msgId){const input=document.getElementById(`edit-input-${msgId}`);if(!input)return;const newText=input.value.trim();if(!newText){showToast('Message cannot be empty','error');return;}try{await db.collection('chats').doc(currentChatId).collection('messages').doc(msgId).update({text:newText,edited:true});showToast('Message edited ✅','success');}catch(e){showToast('Error editing message','error');}}
 function cancelEditMsg(msgId,oldText){const el=document.getElementById(`msg-text-${msgId}`);if(el)el.textContent=oldText;}
 async function deleteMsg(msgId){if(!confirm('Do you want to delete this message?'))return;try{await db.collection('chats').doc(currentChatId).collection('messages').doc(msgId).delete();showToast('Message deleted ✅','success');}catch(e){showToast('Error deleting message','error');}}
-async function sendMessage(){const input=document.getElementById('messageInput');const text=input.value.trim();if(!text||!currentChatId)return;input.value='';try{await db.collection('chats').doc(currentChatId).collection('messages').add({text,senderId:currentUser.uid,senderName:currentUserData.displayName||'',timestamp:firebase.firestore.FieldValue.serverTimestamp(),edited:false});await db.collection('chats').doc(currentChatId).set({lastMessage:text,lastSender:currentUser.uid,lastTimestamp:firebase.firestore.FieldValue.serverTimestamp(),participants:currentChatType==='private'?[currentUser.uid,currentChatPartner]:undefined,type:currentChatType,name:currentChatType==='group'?(allGroups.find(g=>g.id===currentChatId)||{}).name:undefined,members:currentChatType==='group'?(allGroups.find(g=>g.id===currentChatId)||{}).members:undefined},{merge:true});const senderName=currentUserData.displayName||currentUserData.email.split('@')[0];const preview=text.length>60?text.substring(0,60)+'...':text;let targetUsers=[];if(currentChatType==='private')targetUsers=[currentChatPartner];else if(currentChatType==='group'){const group=allGroups.find(g=>g.id===currentChatId);if(group&&group.members)targetUsers=group.members.filter(uid=>uid!==currentUser.uid);}const notifBatch=db.batch();targetUsers.forEach(uid=>{const notifRef=db.collection('users').doc(uid).collection('notifications').doc();notifBatch.set(notifRef,{senderId:currentUser.uid,senderName,chatId:currentChatId,chatType:currentChatType,chatName:currentChatType==='group'?(allGroups.find(g=>g.id===currentChatId)||{}).name:senderName,timestamp:firebase.firestore.FieldValue.serverTimestamp(),read:false});});await notifBatch.commit();}catch(e){showToast('Error sending message','error');}}
+
+async function sendMessage(){const input=document.getElementById('messageInput');const text=input.value.trim();if(!text||!currentChatId)return;input.value='';try{await db.collection('chats').doc(currentChatId).collection('messages').add({text,senderId:currentUser.uid,senderName:currentUserData.displayName||'',timestamp:firebase.firestore.FieldValue.serverTimestamp(),edited:false});await db.collection('chats').doc(currentChatId).set({lastMessage:text,lastSender:currentUser.uid,lastTimestamp:firebase.firestore.FieldValue.serverTimestamp(),participants:currentChatType==='private'?[currentUser.uid,currentChatPartner]:undefined,type:currentChatType,name:currentChatType==='group'?(allGroups.find(g=>g.id===currentChatId)||{}).name:undefined,members:currentChatType==='group'?(allGroups.find(g=>g.id===currentChatId)||{}).members:undefined},{merge:true});const senderName=currentUserData.displayName||currentUserData.email.split('@')[0];const preview=text.length>60?text.substring(0,60)+'...':text;let targetUsers=[];if(currentChatType==='private')targetUsers=[currentChatPartner];else if(currentChatType==='group'){const group=allGroups.find(g=>g.id===currentChatId);if(group&&group.members)targetUsers=group.members.filter(uid=>uid!==currentUser.uid);}const notifBatch=db.batch();targetUsers.forEach(uid=>{const notifRef=db.collection('users').doc(uid).collection('notifications').doc();notifBatch.set(notifRef,{senderId:currentUser.uid,senderName,chatId:currentChatId,chatType:currentChatType,chatName:currentChatType==='group'?(allGroups.find(g=>g.id===currentChatId)||{}).name:senderName,timestamp:firebase.firestore.FieldValue.serverTimestamp(),read:false});});await notifBatch.commit();}catch(e){console.log('Chat Error:',e);if(e.code === 'permission-denied'){showToast('Firebase Permission Denied! Go to Firebase Console -> Firestore -> Rules and allow write for auth users.','error',10000);}else{showToast('Error sending message: '+e.message,'error');}}}
 function updateChatBadge(){const total=Object.values(unreadCounts).reduce((a,b)=>a+b,0);const badge=document.getElementById('chatNavBadge');if(badge){if(total>0){badge.textContent=total>99?'99+':total;badge.classList.remove('hidden');}else badge.classList.add('hidden');}}
 
-// ===== GROUPS (MANAGERS ONLY) =====
 function openCreateGroupModal(){if(!isManager())return;document.getElementById('createGroupModal').classList.remove('hidden');document.getElementById('createGroupModal').classList.add('flex');document.getElementById('groupName').value='';document.getElementById('groupError').classList.add('hidden');const list=document.getElementById('groupMembersList');list.innerHTML='';allUsers.filter(u=>u.id!==currentUser.uid).forEach(u=>{const n=u.displayName||u.email.split('@')[0];list.innerHTML+=`<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer"><input type="checkbox" value="${u.id}" class="group-member-cb w-4 h-4 accent-purple-500"><span class="text-sm">${esc(n)}</span><span class="text-[10px] ${u.role==='assistant'?'text-cyan-500':u.role==='manager'?'text-blue-400':'text-purple-400'}">${roleLabel(u.role)}</span></label>`;});}
 function closeCreateGroupModal(){document.getElementById('createGroupModal').classList.add('hidden');document.getElementById('createGroupModal').classList.remove('flex');}
 async function createGroup(){const name=document.getElementById('groupName').value.trim();const members=[currentUser.uid,...Array.from(document.querySelectorAll('.group-member-cb:checked')).map(cb=>cb.value)];const errEl=document.getElementById('groupError');errEl.classList.add('hidden');if(!name){errEl.textContent='Enter group name';errEl.classList.remove('hidden');return;}if(members.length<2){errEl.textContent='Select at least one member';errEl.classList.remove('hidden');return;}try{await db.collection('groups').add({name,members,createdBy:currentUser.uid,createdAt:firebase.firestore.FieldValue.serverTimestamp()});showToast('Group created ✅','success');closeCreateGroupModal();}catch(e){errEl.textContent='Error';errEl.classList.remove('hidden');}}
@@ -425,182 +295,24 @@ async function addMembersToGroup(){const newMembers=Array.from(document.querySel
 async function removeFromGroup(uid){const g=allGroups.find(x=>x.id===currentChatId);if(!g)return;await db.collection('groups').doc(currentChatId).update({members:(g.members||[]).filter(m=>m!==uid)});showToast('Removed ✅','success');closeGroupSettingsModal();}
 async function deleteCurrentGroup(){if(!isManager())return;if(!currentChatId)return;await db.collection('groups').doc(currentChatId).delete();closeGroupSettingsModal();backToContacts();showToast('Group deleted ✅','success');}
 
-// ===== MATERIALS =====
-function getThumbUrl(url, type) {
-  if (!url || !url.includes('res.cloudinary.com')) return url;
-  if (type === 'video') {
-    let newUrl = url.replace('/upload/', '/upload/so_2,f_jpg,w_400,q_auto/');
-    return newUrl.replace(/\.(mp4|webm|mov)$/i, '.jpg');
-  } else {
-    return url.replace('/upload/', '/upload/f_auto,w_400,q_auto/');
-  }
-}
-
+function getThumbUrl(url, type) {if (!url || !url.includes('res.cloudinary.com')) return url;if (type === 'video') {let newUrl = url.replace('/upload/', '/upload/so_2,f_jpg,w_400,q_auto/');return newUrl.replace(/\.(mp4|webm|mov)$/i, '.jpg');} else {return url.replace('/upload/', '/upload/f_auto,w_400,q_auto/');}}
 function loadMaterials(){db.collection('materials').onSnapshot(s=>{allMaterials=[];s.forEach(d=>allMaterials.push({id:d.id,...d.data()}));renderMaterials();});}
-function renderMaterials(){
-  const grid=document.getElementById('materialsGrid');if(!grid)return;
-  let filtered=allMaterials;
-  
-  if(isManager()){
-    const teamFilter=document.getElementById('matTeamFilter').value;
-    if(teamFilter!=='all') filtered=filtered.filter(m=>m.teamId===teamFilter);
-  } else if(isTrainer()){
-    filtered=filtered.filter(m => 
-      (m.teamId === currentUserData.teamId) || 
-      (m.sharedWith && m.sharedWith.includes(currentUser.uid))
-    );
-  } else if(isAssistant()){
-    filtered=filtered.filter(m => 
-      (m.teamId === currentUserData.teamId && m.visibleToAssistants === true) || 
-      (m.sharedWith && m.sharedWith.includes(currentUser.uid))
-    );
-  }
-  
-  if(currentMaterialFilter==='video') filtered=filtered.filter(m=>m.type==='video'||(m.url&&m.url.match(/\.(mp4|webm|mov)/i)));
-  if(currentMaterialFilter==='image') filtered=filtered.filter(m=>m.type==='image'||(m.url&&m.url.match(/\.(jpg|jpeg|png|gif|webp)/i)));
-  
-  let h='';
-  filtered.forEach(m=>{
-    const isVideo=m.type==='video'||(m.url&&m.url.match(/\.(mp4|webm|mov)/i));
-    const vis=m.visibleToAssistants===true;
-    const canToggle = isManager() || (isTrainer() && m.teamId === currentUserData.teamId);
-    const visToggle = canToggle ? `<button onclick="event.stopPropagation();toggleMatVis('${m.id}',${!vis})" class="absolute top-2 left-10 p-1.5 rounded-lg bg-black/60 hover:bg-black/80 transition vis-toggle ${vis?'active':'inactive'}" title="${vis?'Visible to assistants':'Hidden from assistants'}"><iconify-icon icon="${vis?'solar:eye-bold':'solar:eye-closed-bold'}" width="14"></iconify-icon></button>`:'';
-    const delBtn = isManager() ? `<button onclick="event.stopPropagation();openDeleteModal('material','${m.id}')" class="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 hover:bg-red-500/80 text-white transition" style="opacity:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><iconify-icon icon="solar:trash-bin-trash-bold" width="14"></iconify-icon></button>` : '';
-    const shareBtn = isManager() ? `<button onclick="event.stopPropagation();openShareModal('${m.id}')" class="absolute top-2 right-10 p-1.5 rounded-lg bg-black/60 hover:bg-purple-600 text-white transition" style="opacity:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><iconify-icon icon="solar:user-plus-bold" width="14"></iconify-icon></button>` : '';
-    const thumbUrl = getThumbUrl(m.url, isVideo ? 'video' : 'image');
-    const sharedBadge = (m.sharedWith && m.sharedWith.length > 0) ? '<span class="text-[10px] text-cyan-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:users-group-two-rounded-bold" width="10"></iconify-icon> Shared</span>' : '';
-    const privateBadge = (!m.teamId && isManager()) ? '<span class="text-[10px] text-amber-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:lock-password-bold" width="10"></iconify-icon> Managers Only</span>' : '';
-    const sharedWithMeBadge = (m.sharedWith && m.sharedWith.includes(currentUser.uid) && !isManager()) ? '<span class="text-[10px] text-cyan-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:share-bold" width="10"></iconify-icon> Shared with you</span>' : '';
-    
-    h+=`<div class="material-card glass-card rounded-2xl overflow-hidden relative">
-      <div class="aspect-video bg-gray-900 relative cursor-pointer" onclick="previewMaterial('${m.id}')">
-        <img src="${thumbUrl}" class="w-full h-full object-cover" alt="" loading="lazy">
-        ${isVideo?`<div class="absolute inset-0 flex items-center justify-center bg-black/30"><iconify-icon icon="solar:play-bold" width="40" class="text-white/80"></iconify-icon></div>`:''}
-      </div>
-      <div class="p-3 sm:p-4">
-        <p class="text-sm font-semibold truncate">${esc(m.title||m.name||'Material')}</p>
-        <p class="text-xs text-gray-500 mt-1">${esc(m.teamName||'General')}</p>
-        ${privateBadge}
-        ${sharedBadge}
-        ${sharedWithMeBadge}
-        ${canToggle && !vis && !privateBadge ? '<p class="text-[10px] text-amber-500/70 mt-1 flex items-center gap-1"><iconify-icon icon="solar:eye-closed-bold" width="10"></iconify-icon> Hidden from assistants</p>' : ''}
-      </div>
-      ${delBtn}
-      ${shareBtn}
-      ${visToggle}
-    </div>`;
-  });
-  grid.innerHTML=h||`<div class="col-span-full text-center py-12 text-gray-600">No materials</div>`;
-}
-
-function openShareModal(matId) {
-  sharingMaterialId = matId;
-  const m = allMaterials.find(x => x.id === matId);
-  if(!m) return;
-  document.getElementById('shareMaterialModal').classList.remove('hidden');
-  document.getElementById('shareMaterialModal').classList.add('flex');
-  const list = document.getElementById('shareUsersList');
-  list.innerHTML = '';
-  const targetUsers = allUsers.filter(u => u.role !== 'manager');
-  if(targetUsers.length === 0) {
-    list.innerHTML = '<p class="text-sm text-gray-500">No Trainers or Assistants available.</p>';
-    return;
-  }
-  targetUsers.forEach(u => {
-    const n = u.displayName || u.email.split('@')[0];
-    const isChecked = m.sharedWith && m.sharedWith.includes(u.id) ? 'checked' : '';
-    list.innerHTML += `<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer"><input type="checkbox" value="${u.id}" class="share-user-cb w-4 h-4 accent-purple-500" ${isChecked}><span class="text-sm">${esc(n)}</span><span class="text-[10px] ${u.role==='assistant'?'text-cyan-500':'text-purple-400'}">${roleLabel(u.role)}</span></label>`;
-  });
-}
-function closeShareMaterialModal() {
-  document.getElementById('shareMaterialModal').classList.add('hidden');
-  document.getElementById('shareMaterialModal').classList.remove('flex');
-  sharingMaterialId = null;
-}
-async function saveShareMaterial() {
-  if(!sharingMaterialId) return;
-  const selected = Array.from(document.querySelectorAll('.share-user-cb:checked')).map(cb => cb.value);
-  try {
-    await db.collection('materials').doc(sharingMaterialId).update({ sharedWith: selected });
-    showToast('Sharing settings saved ✅', 'success');
-    closeShareMaterialModal();
-  } catch(e) {
-    showToast('Error saving settings', 'error');
-  }
-}
-
+function renderMaterials(){const grid=document.getElementById('materialsGrid');if(!grid)return;let filtered=allMaterials;if(isManager()){const teamFilter=document.getElementById('matTeamFilter').value;if(teamFilter!=='all') filtered=filtered.filter(m=>m.teamId===teamFilter);} else if(isTrainer()){filtered=filtered.filter(m => (m.teamId === currentUserData.teamId) || (m.sharedWith && m.sharedWith.includes(currentUser.uid)));} else if(isAssistant()){filtered=filtered.filter(m => (m.teamId === currentUserData.teamId && m.visibleToAssistants === true) || (m.sharedWith && m.sharedWith.includes(currentUser.uid)));}if(currentMaterialFilter==='video') filtered=filtered.filter(m=>m.type==='video'||(m.url&&m.url.match(/\.(mp4|webm|mov)/i)));if(currentMaterialFilter==='image') filtered=filtered.filter(m=>m.type==='image'||(m.url&&m.url.match(/\.(jpg|jpeg|png|gif|webp)/i)));let h='';filtered.forEach(m=>{const isVideo=m.type==='video'||(m.url&&m.url.match(/\.(mp4|webm|mov)/i));const vis=m.visibleToAssistants===true;const canToggle = isManager() || (isTrainer() && m.teamId === currentUserData.teamId);const visToggle = canToggle ? `<button onclick="event.stopPropagation();toggleMatVis('${m.id}',${!vis})" class="absolute top-2 left-10 p-1.5 rounded-lg bg-black/60 hover:bg-black/80 transition vis-toggle ${vis?'active':'inactive'}" title="${vis?'Visible to assistants':'Hidden from assistants'}"><iconify-icon icon="${vis?'solar:eye-bold':'solar:eye-closed-bold'}" width="14"></iconify-icon></button>`:'';const delBtn = isManager() ? `<button onclick="event.stopPropagation();openDeleteModal('material','${m.id}')" class="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 hover:bg-red-500/80 text-white transition" style="opacity:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><iconify-icon icon="solar:trash-bin-trash-bold" width="14"></iconify-icon></button>` : '';const shareBtn = isManager() ? `<button onclick="event.stopPropagation();openShareModal('${m.id}')" class="absolute top-2 right-10 p-1.5 rounded-lg bg-black/60 hover:bg-purple-600 text-white transition" style="opacity:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><iconify-icon icon="solar:user-plus-bold" width="14"></iconify-icon></button>` : '';const thumbUrl = getThumbUrl(m.url, isVideo ? 'video' : 'image');const sharedBadge = (m.sharedWith && m.sharedWith.length > 0) ? '<span class="text-[10px] text-cyan-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:users-group-two-rounded-bold" width="10"></iconify-icon> Shared</span>' : '';const privateBadge = (!m.teamId && isManager()) ? '<span class="text-[10px] text-amber-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:lock-password-bold" width="10"></iconify-icon> Managers Only</span>' : '';const sharedWithMeBadge = (m.sharedWith && m.sharedWith.includes(currentUser.uid) && !isManager()) ? '<span class="text-[10px] text-cyan-500/80 mt-1 flex items-center gap-1"><iconify-icon icon="solar:share-bold" width="10"></iconify-icon> Shared with you</span>' : '';h+=`<div class="material-card glass-card rounded-2xl overflow-hidden relative"><div class="aspect-video bg-gray-900 relative cursor-pointer" onclick="previewMaterial('${m.id}')"><img src="${thumbUrl}" class="w-full h-full object-cover" alt="" loading="lazy">${isVideo?`<div class="absolute inset-0 flex items-center justify-center bg-black/30"><iconify-icon icon="solar:play-bold" width="40" class="text-white/80"></iconify-icon></div>`:''}</div><div class="p-3 sm:p-4"><p class="text-sm font-semibold truncate">${esc(m.title||m.name||'Material')}</p><p class="text-xs text-gray-500 mt-1">${esc(m.teamName||'General')}</p>${privateBadge}${sharedBadge}${sharedWithMeBadge}${canToggle && !vis && !privateBadge ? '<p class="text-[10px] text-amber-500/70 mt-1 flex items-center gap-1"><iconify-icon icon="solar:eye-closed-bold" width="10"></iconify-icon> Hidden from assistants</p>' : ''}</div>${delBtn}${shareBtn}${visToggle}</div>`;});grid.innerHTML=h||`<div class="col-span-full text-center py-12 text-gray-600">No materials</div>`;}
+function openShareModal(matId) {sharingMaterialId = matId;const m = allMaterials.find(x => x.id === matId);if(!m) return;document.getElementById('shareMaterialModal').classList.remove('hidden');document.getElementById('shareMaterialModal').classList.add('flex');const list = document.getElementById('shareUsersList');list.innerHTML = '';const targetUsers = allUsers.filter(u => u.role !== 'manager');if(targetUsers.length === 0) {list.innerHTML = '<p class="text-sm text-gray-500">No Trainers or Assistants available.</p>';return;}targetUsers.forEach(u => {const n = u.displayName || u.email.split('@')[0];const isChecked = m.sharedWith && m.sharedWith.includes(u.id) ? 'checked' : '';list.innerHTML += `<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer"><input type="checkbox" value="${u.id}" class="share-user-cb w-4 h-4 accent-purple-500" ${isChecked}><span class="text-sm">${esc(n)}</span><span class="text-[10px] ${u.role==='assistant'?'text-cyan-500':'text-purple-400'}">${roleLabel(u.role)}</span></label>`;});}
+function closeShareMaterialModal() {document.getElementById('shareMaterialModal').classList.add('hidden');document.getElementById('shareMaterialModal').classList.remove('flex');sharingMaterialId = null;}
+async function saveShareMaterial() {if(!sharingMaterialId) return;const selected = Array.from(document.querySelectorAll('.share-user-cb:checked')).map(cb => cb.value);try {await db.collection('materials').doc(sharingMaterialId).update({ sharedWith: selected });showToast('Sharing settings saved ✅', 'success');closeShareMaterialModal();} catch(e) {showToast('Error saving settings', 'error');}}
 async function toggleMatVis(matId,makeVisible){try{await db.collection('materials').doc(matId).update({visibleToAssistants:makeVisible});showToast(makeVisible?'Shown to assistants ✅':'Hidden from assistants 👁️‍🗨️','success');}catch(e){showToast('Error','error');}}
 function filterMaterials(f){currentMaterialFilter=f;['All','Video','Image'].forEach(t=>{const btn=document.getElementById('matFilter'+t);if(btn)btn.className=f===t.toLowerCase()?'px-4 py-2 rounded-xl text-sm font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20 transition whitespace-nowrap':'px-4 py-2 rounded-xl text-sm font-semibold text-gray-400 hover:text-white transition whitespace-nowrap';});renderMaterials();}
-function previewMaterial(id){
-  const m=allMaterials.find(x=>x.id===id);if(!m)return;
-  document.getElementById('materialPreviewModal').classList.remove('hidden');
-  document.getElementById('materialPreviewModal').classList.add('flex');
-  const isVideo=m.type==='video'||(m.url&&m.url.match(/\.(mp4|webm|mov)/i));
-  document.getElementById('materialPreviewContent').innerHTML=isVideo?`<video src="${m.url}" controls autoplay class="w-full max-h-[80vh]"></video>`:`<img src="${m.url}" class="w-full max-h-[80vh] object-contain" alt="">`;
-}
-function closeMaterialPreview(){
-  document.getElementById('materialPreviewModal').classList.add('hidden');
-  document.getElementById('materialPreviewModal').classList.remove('flex');
-  document.getElementById('materialPreviewContent').innerHTML = '';
-}
-function openUploadWidget(){
-  if(!isManager()) return;
-  if(!CLOUD_NAME){showToast('Cloudinary is not configured','error');return;}
-  const widget=cloudinary.createUploadWidget({cloudName:CLOUD_NAME,uploadPreset:UPLOAD_PRESET,folder:'k-aura-materials'},async(err,result)=>{
-    if(!err&&result.event==='success'){
-      const info=result.info;
-      let teamId, teamName;
-      teamId=document.getElementById('matTeamFilter').value;
-      teamName=teamId!=='all'?document.getElementById('matTeamFilter').selectedOptions[0].text:'';
-      
-      await db.collection('materials').add({url:info.secure_url,title:info.original_filename,name:info.original_filename,type:info.resource_type,teamId: teamId,teamName: teamName,uploadedBy:currentUser.uid,uploadedAt:firebase.firestore.FieldValue.serverTimestamp(),visibleToAssistants:false, sharedWith: []});
-      showToast('Material uploaded ✅','success');
-    }
-  });
-  widget.open();
-}
+function previewMaterial(id){const m=allMaterials.find(x=>x.id===id);if(!m)return;document.getElementById('materialPreviewModal').classList.remove('hidden');document.getElementById('materialPreviewModal').classList.add('flex');const isVideo=m.type==='video'||(m.url&&m.url.match(/\.(mp4|webm|mov)/i));document.getElementById('materialPreviewContent').innerHTML=isVideo?`<video src="${m.url}" controls autoplay class="w-full max-h-[80vh]"></video>`:`<img src="${m.url}" class="w-full max-h-[80vh] object-contain" alt="">`;}
+function closeMaterialPreview(){document.getElementById('materialPreviewModal').classList.add('hidden');document.getElementById('materialPreviewModal').classList.remove('flex');document.getElementById('materialPreviewContent').innerHTML = '';}
+function openUploadWidget(){if(!isManager()) return;if(!CLOUD_NAME){showToast('Cloudinary is not configured','error');return;}const widget=cloudinary.createUploadWidget({cloudName:CLOUD_NAME,uploadPreset:UPLOAD_PRESET,folder:'k-aura-materials'},async(err,result)=>{if(!err&&result.event==='success'){const info=result.info;let teamId, teamName;teamId=document.getElementById('matTeamFilter').value;teamName=teamId!=='all'?document.getElementById('matTeamFilter').selectedOptions[0].text:'';await db.collection('materials').add({url:info.secure_url,title:info.original_filename,name:info.original_filename,type:info.resource_type,teamId: teamId,teamName: teamName,uploadedBy:currentUser.uid,uploadedAt:firebase.firestore.FieldValue.serverTimestamp(),visibleToAssistants:false, sharedWith: []});showToast('Material uploaded ✅','success');}});widget.open();}
 
-// ===== BACKUP =====
 async function startBackup(){const btn=document.getElementById('backupBtn'),prog=document.getElementById('backupProgress'),errEl=document.getElementById('backupError');errEl.classList.add('hidden');btn.disabled=true;btn.innerHTML='<iconify-icon icon="solar:refresh-bold" width="22" class="animate-spin"></iconify-icon> Preparing...';prog.classList.remove('hidden');try{document.getElementById('backupStatusText').textContent='Collecting data...';document.getElementById('backupPercent').textContent='10%';document.getElementById('backupBar').style.width='10%';const zip=new JSZip();const usersData=allUsers.map(u=>({'Name':u.displayName,'Email':u.email,'Phone':u.phone||'','Role':roleLabel(u.role),'Team':u.teamName||''}));const ws=XLSX.utils.json_to_sheet(usersData);const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Users');const teamsData=allTeams.map(t=>({'Team Name':t.name,'Members Count':allUsers.filter(u=>u.teamId===t.id).length}));const ws2=XLSX.utils.json_to_sheet(teamsData);XLSX.utils.book_append_sheet(wb,ws2,'Teams');const excelBuffer=XLSX.write(wb,{bookType:'xlsx',type:'array'});zip.file('K-Aura_Data.xlsx',excelBuffer);document.getElementById('backupStatusText').textContent='Downloading materials...';document.getElementById('backupPercent').textContent='30%';document.getElementById('backupBar').style.width='30%';for(let i=0;i<allMaterials.length;i++){const m=allMaterials[i];const folder=m.teamName||'General';const isVideo=m.type==='video'||(m.url&&m.url.match(/\.(mp4|webm|mov)/i));const ext=isVideo?'.mp4':'.jpg';try{const resp=await fetch(m.url);const blob=await resp.blob();zip.folder(folder).file((m.title||m.name||'material_'+i)+ext,blob);}catch(e){}const pct=30+Math.round((i+1)/allMaterials.length*60);document.getElementById('backupPercent').textContent=pct+'%';document.getElementById('backupBar').style.width=pct+'%';document.getElementById('backupStatusText').textContent=`Downloading ${i+1} of ${allMaterials.length}...`;}document.getElementById('backupStatusText').textContent='Creating file...';document.getElementById('backupPercent').textContent='95%';document.getElementById('backupBar').style.width='95%';const content=await zip.generateAsync({type:'blob'});const url=URL.createObjectURL(content);const a=document.createElement('a');a.href=url;a.download='K-Aura_Backup.zip';a.click();URL.revokeObjectURL(url);document.getElementById('backupPercent').textContent='100%';document.getElementById('backupBar').style.width='100%';document.getElementById('backupStatusText').textContent='Downloaded ✅';showToast('Downloaded ✅','success');}catch(e){errEl.textContent='Error: '+e.message;errEl.classList.remove('hidden');}finally{btn.disabled=false;btn.innerHTML='<iconify-icon icon="solar:download-bold" width="22"></iconify-icon><span>Download Backup</span>';setTimeout(()=>prog.classList.add('hidden'),3000);}}
 
 function cleanup(){if(contactsUnsub)contactsUnsub();if(messagesUnsub)messagesUnsub();if(materialsUnsub)materialsUnsub();if(notifUnsub)notifUnsub();contactsUnsub=null;messagesUnsub=null;materialsUnsub=null;notifUnsub=null;allUsers=[];allGroups=[];allTeams=[];allMaterials=[];myNotifications=[];unreadCounts={};}
 document.addEventListener('click',e=>{if(!e.target.closest('.notif-dropdown')&&!e.target.closest('[onclick*="toggleNotifPanel"]'))document.querySelectorAll('.notif-dropdown').forEach(d=>d.classList.remove('show'));});
 
-// ===== KEYBOARD NAVIGATION =====
-document.addEventListener('keydown', (e) => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-    if (e.key === 'Enter' && e.target.id === 'messageInput') {
-      e.preventDefault();
-      sendMessage();
-    }
-    return;
-  }
-  if (document.getElementById('chatView').classList.contains('hidden')) return;
-  const list = document.getElementById('contactsList');
-  const items = list.querySelectorAll('.contact-item');
-  if (items.length === 0) return;
-  let currentIndex = Array.from(items).findIndex(item => item.classList.contains('active-chat'));
-  if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    if (currentIndex < items.length - 1) {
-      currentIndex++;
-      items[currentIndex].click();
-      items[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    if (currentIndex > 0) {
-      currentIndex--;
-      items[currentIndex].click();
-      items[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  } else if (e.key === 'Enter') {
-    e.preventDefault();
-    if (currentIndex === -1 && items.length > 0) {
-      items[0].click();
-    }
-  }
-});
+document.addEventListener('keydown', (e) => {if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {if (e.key === 'Enter' && e.target.id === 'messageInput') {e.preventDefault();sendMessage();}return;}if (document.getElementById('chatView').classList.contains('hidden')) return;const list = document.getElementById('contactsList');const items = list.querySelectorAll('.contact-item');if (items.length === 0) return;let currentIndex = Array.from(items).findIndex(item => item.classList.contains('active-chat'));if (e.key === 'ArrowDown') {e.preventDefault();if (currentIndex < items.length - 1) {currentIndex++;items[currentIndex].click();items[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });}} else if (e.key === 'ArrowUp') {e.preventDefault();if (currentIndex > 0) {currentIndex--;items[currentIndex].click();items[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });}} else if (e.key === 'Enter') {e.preventDefault();if (currentIndex === -1 && items.length > 0) {items[0].click();}}});
 </script>
 </body>
 </html>
